@@ -9,8 +9,20 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
+
       // Verbindung mit Socket Server
       var socket = io.connect('http://localhost:1337/');
+
+      var data = "Hello Server, my name is Display";
+
+      socket.emit('displaySocket', data);
+
+      socket.on('displaySocket', getData);
+
+      function getData(data){
+          console.log(data);
+      }
+
     </script>
   </body>
 </html>

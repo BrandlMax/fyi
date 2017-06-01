@@ -7,10 +7,27 @@
   <body>
       <h1>Mobile</h1>
 
+      <input type="range" id="myRange" min="0" max="100" step="10" oninput="changedInput(this.value)" onchange="changedInput(this.value)">
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
       // Verbindung mit Socket Server
       var socket = io.connect('http://localhost:1337/');
+
+      var data = "Hello Server, my name is Smartphone";
+
+      socket.emit('mobileSocket', data);
+
+      socket.on('mobileSocket', getData);
+
+      function getData(data){
+          console.log(data);
+      }
+
+      function changedInput(inputValue){
+          socket.emit('mobileSocket', inputValue);
+      }
+
     </script>
   </body>
 </html>
