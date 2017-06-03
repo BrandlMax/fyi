@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/BrandlMax/fyi#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
+    "querystring": "^0.2.0",
+    "request": "^2.81.0",
     "socket.io": "^2.0.1"
   }
 }

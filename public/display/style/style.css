@@ -1,14 +1,23 @@
 body {padding: 0; margin: 0;}
 
 .overlay {
+    font-family: 'Raleway', sans-serif;
     position: absolute;
     display: flex;
     align-items: center;
     height: 100%;
     width: 100%;
     justify-content: center;
+    flex-direction: column;
 }
 
 .overlay img {
     width: 15%;
+}
+
+#msg{
+  font-weight: bold;
+  color: #fff;
+  margin-top: 30px;
+  font-size: 30px;
 }

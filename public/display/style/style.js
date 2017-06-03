@@ -42,16 +42,16 @@ class Style{
       background(STYLE.colors.lila.full);
   }
 
-  RandomColorCircle(inputValue){
+  RandomColorCircle(){
     noStroke();
     var r = floor(random(0, this.colorArray.length));
     fill(this.colorArray[r])
+    console.log(SCM.DATA.x);
+    var x = floor(map(SCM.DATA.x, 0, 100, 0, windowWidth));
+    var y = floor(map(SCM.DATA.y, 0, 100, 0, windowHeight));
 
-    var x = floor(map(inputValue.x, 0, 100, 0, windowWidth));
-    var y = floor(map(inputValue.y, 0, 100, 0, windowHeight));
 
-
-    ellipse(x, y, 10*inputValue.y, 10*inputValue.y);
+    ellipse(x, y, 10*SCM.DATA.y, 10*SCM.DATA.y);
   }
 
 }

@@ -10,6 +10,8 @@ class SocketServerManager{
       this.socket;
 
       this.room;
+
+      this.api = 0;
   }
 
 
@@ -67,7 +69,7 @@ class SocketServerManager{
   sendToDisplay(data){
     this.io.sockets.in(this.room).emit('Display', data);
   }
-
+  
 }
 
 module.exports = SocketServerManager;

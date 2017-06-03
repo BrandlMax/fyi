@@ -1,16 +1,9 @@
 var SCM = new SocketClientManager();
+var FUNC = new Functions();
 var STYLE;
-var PARAMETER;
-var CHANGE = false;
+var update;
 
 function setup() {
-
-  // PARAMETER
-
-  PARAMETER = {
-      slider : 1
-  };
-
 
   // CONNECTION
   SCM.connect();
@@ -23,11 +16,12 @@ function setup() {
   });
 
   SCM.socket.on('Display', function(data){
-    CHANGE = true;
     console.log(data);
-    PARAMETER.slider = data;
+    SCM.DATA = data;
+    update = true;
   });
 
+  update = true;
 
   // SCREEN
   STYLE = new Style();
@@ -36,7 +30,11 @@ function setup() {
 }
 
 function draw() {
-  STYLE.RandomColorCircle(PARAMETER.slider);
+  STYLE.RandomColorCircle(SCM.DATA);
+  if(update){
+    FUNC.displayUserData();
+    update = false;
+  }
 }
 
 function windowResized() {

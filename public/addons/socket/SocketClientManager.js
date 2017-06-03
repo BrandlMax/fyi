@@ -4,6 +4,13 @@ class SocketClientManager{
   constructor(){
     this.socket;
     this.room;
+
+    this.DATA = {
+       x: 0,
+       y: 0,
+       userData: 0,
+       playlistData: 0
+    };
   }
 
   connect(){
@@ -18,9 +25,9 @@ class SocketClientManager{
     this.socket.emit('room', this.room);
   }
 
-  sendToServer(inputValue){
-    console.log(inputValue);
-    this.socket.emit('fromMobile', inputValue);
+  sendToServer(){
+    console.log(this.DATA);
+    this.socket.emit('fromMobile', this.DATA);
   }
 
 
