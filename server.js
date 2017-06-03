@@ -1,13 +1,13 @@
-// Express für den HTTP Server
-var express = require('express');
-// Socket.io für Verbindung zwischen Smartphone und Desktop
-var socket = require('socket.io');
-
-// SERVER
+// EXPRESS SERVER & SOCKET
 // HTTP Server starten
+var express = require('express');
 var app = express();
 var server = app.listen(process.env.PORT || 1337);
 console.log("Server Up and Running");
+// SOCKET
+var io = require('socket.io')(server);
+var SocketServerManager = require('./serverTools/SocketServerManager.js');
+var SSM = new SocketServerManager();
 
 // Listen & auf den Public Ordner
 app.use(express.static(__dirname + "/"));
@@ -25,51 +25,32 @@ app.get('/', function(req, res) {
           '/public/display/';
 
       console.log(req.myAppPath);
-      res.redirect('http://localhost:1337' + req.myAppPath);
+      res.redirect('http://192.168.2.104:1337' + req.myAppPath);
 
 });
 
-// SOCKET
+io.on('connect', function(socket) {
 
-//HELPER:
-// JUST SEND TO ALL OTHER CONNECTIONS
-//socket.broadcast.emit('msg', data);
-// SEND TO ALL CONNECTIONS
-// io.sockets.emit('msg', data);
-// SEND TO SPECIFIC USER
-// io.sockets.to(socket.id).emit('Message', hellomsg);
-// GET data
-/*
-socket.on('SocketName', function(data){
-        console.log(data);
+    SSM.io = io;
+    SSM.socket = socket;
+    SSM.newUser();
+
+
+    // ROOM MANAGEMENT
+    // ENTER ROOM
+    socket.on('room', function(room) {
+        SSM.joinRoom(room);
+
+
+        socket.on('fromMobile', function (data) {
+          console.log(data);
+          SSM.sendToDisplay(data);
+        });
+
+        socket.on('disconnect', function (room) {
+          SSM.leftRoom(room);
+        });
+
     });
-*/
 
-
-// Neuen Socket anlegen
-var io = socket(server);
-
-// Socket: Führe eine Funktion "newConnection" aus bei neuer Verbindung
-io.sockets.on('connection', newConnection);
-
-// Wird ausgeführt bei neuer Verbindung
-function newConnection(socket){
-
-  console.log("New Socket Connection");
-
-  var dData = "MSG from Server to Display";
-  var mData = "MSG from Server to Mobile";
-
-  socket.emit('displaySocket', dData);
-  socket.emit('mobileSocket', mData);
-
-  socket.on('displaySocket', function(data){
-          console.log(data);
-  });
-
-
-  socket.on('mobileSocket', function(data){
-          console.log(data);
-  });
-
-}
+});

@@ -1,0 +1,14 @@
+body {padding: 0; margin: 0;}
+
+.overlay {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.overlay img {
+    width: 15%;
+}

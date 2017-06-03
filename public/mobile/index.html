@@ -1,33 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Test Server for FYI</title>
+    <title>Mobile Client</title>
+    <script src="../addons/p5/p5.min.js"></script>
+    <script src="../addons/p5/p5.dom.min.js"></script>
+    <script src="../addons/p5/p5.sound.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../addons/socket/SocketClientManager.js"></script>
+    <script src="style/style.js"></script>
+    <script src="sketch.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
   </head>
   <body>
-      <h1>Mobile</h1>
 
-      <input type="range" id="myRange" min="0" max="100" step="10" oninput="changedInput(this.value)" onchange="changedInput(this.value)">
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-      // Verbindung mit Socket Server
-      var socket = io.connect('http://localhost:1337/');
-
-      var data = "Hello Server, my name is Smartphone";
-
-      socket.emit('mobileSocket', data);
-
-      socket.on('mobileSocket', getData);
-
-      function getData(data){
-          console.log(data);
-      }
-
-      function changedInput(inputValue){
-          socket.emit('mobileSocket', inputValue);
-      }
-
-    </script>
   </body>
 </html>
