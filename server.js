@@ -5,6 +5,7 @@
 var express = require('express');
 var app = express();
 var server = app.listen(process.env.PORT || 1337);
+var url = 'http://172.16.18.142:1337';
 console.log("Server Up and Running");
 
 // SOCKET
@@ -35,7 +36,7 @@ app.get('/', function(req, res) {
           '/public/display/';
 
       console.log(req.myAppPath);
-      res.redirect('http://192.168.2.104:1337' + req.myAppPath);
+      res.redirect(url + req.myAppPath);
 
 });
 
@@ -63,16 +64,15 @@ io.on('connect', function(socket) {
 
     });
 
-
-
 });
 
 
 // SPOTIFY CONNECTION
+// From Spotify Web API Tutorial
 
 var client_id = '215a2b57827a45bfb7bd0826bbe207da'; // Your client id
 var client_secret = '89794425f9f449a6a8a51328591b95f4'; // Your secret
-var redirect_uri = 'http://192.168.2.104:1337/callback'; // Your redirect uri
+var redirect_uri = url+'/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters

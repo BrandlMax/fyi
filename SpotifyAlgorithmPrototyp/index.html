@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Spotify Algorithm</title>
+
+    <script src="./SpotifyAlgorithm.js" charset="utf-8"></script>
+    <script src="./GetInputAndDisplay.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <h1> Algorithm Prototyp </h1>
+
+    <label for="playlistLength">Wie viele Songs in Playlist?:</label>
+    <input type="text" id="playlistLength">
+
+    <br/>
+    <br/>
+
+    <label for="SoundQuali">Streaming Qualität:</label>
+    <select id="SoundQuali">
+      <option value="0">Normal</option>
+      <option value="1">Hoch</option>
+      <option value="2">Extrem</option>
+    </select>
+
+    <br/>
+    <br/>
+
+    <label for="MobileTarif">Mobile Tarif:</label>
+    <select id="MobileTarif">
+      <option value="0">Telekom</option>
+      <option value="1">Telekom Unlimited</option>
+      <option value="2">Vodaphone</option>
+      <option value="3">O2</option>
+    </select>
+
+    <br/>
+    <br/>
+
+    <label for="Device">Device:</label>
+    <select id="Device">
+      <option value="0">iPhone</option>
+      <option value="1">Samsung</option>
+      <option value="2">Cheap</option>
+      <option value="3">Expensive</option>
+    </select>
+
+    <br/>
+    <br/>
+
+    <label for="freeStorage">Wie viel Platz hast du auf deinem Smartphone?:</label>
+    <input type="text" id="freeStorage">
+
+    <br/>
+    <br/>
+
+    <label for="timesPlayed">Wie oft hörst du diese Playlist im Monat?:</label>
+    <input type="text" id="timesPlayed">
+
+    <br/>
+    <br/>
+
+    <button onClick="Simulate();">Simulate</button>
+
+    <br/>
+    <br/>
+
+    <hr />
+
+    <h3>Ergebnis</h3>
+
+    <p>FreePrice: <b id="FreePrice">0</b> </p>
+    <p>StudentPrice: <b id="StudentPrice">0</b> </p>
+    <p>PremiumPrice: <b id="PremiumPrice">0</b> </p>
+    <p>FairPrice: <b id="FairPrice">0</b> </p>
+    <br/>
+    <p>SongsPlayed: <b id="SongsPlayed">0</b> </p>
+    <p>AdsPlayed: <b id="AdsPlayed">0</b> </p>
+    <br/>
+    <p>ArtistMoney: <b id="ArtistMoney">0</b> </p>
+    <p>LabelMoney: <b id="LabelMoney">0</b> </p>
+    <p>SpotifyMoney: <b id="SpotifyMoney">0</b> </p>
+    <br/>
+
+  </body>
+</html>
