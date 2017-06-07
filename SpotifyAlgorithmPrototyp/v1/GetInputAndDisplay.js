@@ -11,7 +11,9 @@ function GetInputs(){
 
   SA.Playlist.Songs = document.getElementById("playlistLength").value;
   SA.selectedQuali = document.getElementById("SoundQuali").value;
-  SA.selectedMobileTarif = document.getElementById("MobileTarif").value;
+  SA.selectedMobileTarifPrice = document.getElementById("MobileTarifPrice").value;
+  SA.selectedMobileTarifStorage = document.getElementById("MobileTarifStorage").value;
+  SA.selectedMobileTarifFreeStreaming = document.getElementById("MobileTarifFree").value;
   SA.selectedDevice = document.getElementById("Device").value;
   SA.DeviceFreeStorage = document.getElementById("freeStorage").value;
   SA.Playlist.TimesPlaylistWillBePlayed = document.getElementById("timesPlayed").value;
