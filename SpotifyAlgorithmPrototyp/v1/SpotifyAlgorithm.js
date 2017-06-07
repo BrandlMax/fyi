@@ -173,7 +173,7 @@ class SpotifyAlgorithm{
           this.DeviceStoragePrice =  this.Playlist.OverallSizeInKb * this.Devices[this.selectedDevice].priceperkb;
       } else{
           // THERE IS NOT ENOUGH SPACE ON PHONE
-          this.DeviceStoragePrice = this.Playlist.OverallSizeInKb * this.Devices[this.selectedDevice].priceperkb
+          this.DeviceStoragePrice = this.Playlist.OverallSizeInKb * this.Devices[this.selectedDevice].priceperkb;
           RestKbToStream = RestKbToStream * -1;
 
       }
@@ -197,7 +197,7 @@ class SpotifyAlgorithm{
       this.MobileStreamingPricePremium = RestKbToStream * streamingPriceInKbit;
 
       // Free
-      this.MobileStreamingPriceFree = this.Playlist.OverallSizeInKb * streamingPriceInKbit
+      this.MobileStreamingPriceFree = this.Playlist.OverallSizeInKb * streamingPriceInKbit;
 
     // 3. Spotify Tarife
 

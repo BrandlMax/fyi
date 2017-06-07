@@ -7,16 +7,26 @@ function Simulate(){
 }
 
 function GetInputs(){
+  /*
+  this.UserInput = {
+    SongsInPlaylist: 0,
+    Quality: 0,
+    MobileTarifPrice: 0,
+    MobileTarifVolume: 0,
+    MobileTarifFreeStreaming: false,
+    Device: 0,
+    DeviceStorage: 0,
+    DeviceHowOften: 0
+  }
+  */
 
-
-  SA.Playlist.Songs = document.getElementById("playlistLength").value;
-  SA.selectedQuali = document.getElementById("SoundQuali").value;
-  SA.selectedMobileTarifPrice = document.getElementById("MobileTarifPrice").value;
-  SA.selectedMobileTarifStorage = document.getElementById("MobileTarifStorage").value;
-  SA.selectedMobileTarifFreeStreaming = document.getElementById("MobileTarifFree").value;
-  SA.selectedDevice = document.getElementById("Device").value;
-  SA.DeviceFreeStorage = document.getElementById("freeStorage").value;
-  SA.Playlist.TimesPlaylistWillBePlayed = document.getElementById("timesPlayed").value;
+  SA.UserInput.SongsInPlaylist = document.getElementById("playlistLength").value;
+  SA.UserInput.Quality = document.getElementById("SoundQuali").value;
+  SA.UserInput.MobileTarifPrice = document.getElementById("MobileTarifPrice").value;
+  SA.UserInput.MobileTarifVolume = document.getElementById("MobileTarifVolume").value;
+  SA.UserInput.MobileTarifFreeStreaming = document.getElementById("MobileTarifFree").value;
+  SA.UserInput.DeviceStorage = document.getElementById("freeStorage").value;
+  SA.UserInput.DeviceHowOften = document.getElementById("timesPlayed").value;
 
 }
 
