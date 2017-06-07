@@ -7,7 +7,7 @@ class SpotifyAlgorithm{
     this.selectedQuali = 0;
     this.selectedDevice = 0;
     this.selectedMobileTarif = 0;
-    this.DeviceFreeStorage;
+    this.DeviceFreeStorage; // In MB
 
     // 1kb = 8kbit
 
@@ -178,17 +178,25 @@ class SpotifyAlgorithm{
   }
 
   CalculatePricing(){
-    debugger;
+
+    debugger
     // 1. Devices
-      var RestKbToStream = this.DeviceFreeStorage - this.Playlist.OverallSizeInKb;
-      this.DeviceStoragePrice =  this.DeviceFreeStorage * this.Devices[this.selectedDevice].priceperkb;
+      var RestKbToStream = this.Playlist.OverallSizeInKb - (this.DeviceFreeStorage * 1024 * 8);
+
+      if(RestkbToStream > 0 || this.Playlist.OverallSizeInKb > this.MobileTarife[this.selectedMobileTarif].volumeinGB){
+          // IF THERE IS ENOUGH SPACE ON PHONE
+          this.DeviceStoragePrice =  this.Playlist.OverallSizeInKb * this.Devices[this.selectedDevice].priceperkb;
+      } else{
+          // THERE IS NOT ENOUGH SPACE ON PHONE
+          RestKbToStream = RestKbToStream * -1;
+      }
 
     // 2. Streaming
 
       // Premium
-      var RestkbOnVolume = (this.MobileTarife[this.selectedMobileTarif].volumeinGB * 1024 * 1024 * 8 ) - RestKbToStream;
+      var RestkbOnFlat = (this.MobileTarife[this.selectedMobileTarif].volumeinGB * 1024 * 1024 * 8 ) - RestKbToStream;
 
-      if(RestkbOnVolume < 0 || this.Playlist.OverallSizeInKb > this.MobileTarife[this.selectedMobileTarif].volumeinGB){
+      if(RestkbOnFlat < 0 || this.Playlist.OverallSizeInKb > this.MobileTarife[this.selectedMobileTarif].volumeinGB){
         // Storage Aufgebraucht Meldung?
       }
 
