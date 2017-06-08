@@ -37,8 +37,7 @@ function Outputs(){
   document.getElementById("PremiumPrice").innerHTML =  SA.Result.PremiumPrice;
   document.getElementById("FairPrice").innerHTML =  SA.Result.FairPrice;
 
-    document.getElementById("SongsPlayed").innerHTML =  SA.Result.SongsPlayed;
-  document.getElementById("SongsPlayedOnFree").innerHTML =  SA.Result.SongsPlayedOnFree;
+  document.getElementById("SongsPlayed").innerHTML =  SA.Result.SongsPlayed;
   document.getElementById("AdsPlayed").innerHTML =  SA.Result.AdsPlayed;
 
   document.getElementById("ArtistMoney").innerHTML =  SA.Result.ArtistMoney;

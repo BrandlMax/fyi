@@ -5,7 +5,7 @@
 var express = require('express');
 var app = express();
 var server = app.listen(process.env.PORT || 1337);
-var url = 'http://172.16.18.142:1337';
+var url = 'http://localhost:1337';
 console.log("Server Up and Running");
 
 // SOCKET
