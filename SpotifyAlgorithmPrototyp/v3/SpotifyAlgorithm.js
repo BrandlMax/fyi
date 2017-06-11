@@ -1,9 +1,12 @@
 class SpotifyAlgorithm{
 
-  constructor(){
+  constructor(APIdata){
 
     this.API = false;
-    this.APIOBJ = null;
+    this.APIdata = APIdata;
+
+    // Create Playlist Template
+    this.Playlist = new Playlist();
 
     this.UserInput = {
 
@@ -13,13 +16,8 @@ class SpotifyAlgorithm{
       MobileTarifVolume: null, //GB
       MobileTarifFreeStreaming: false,
       DeviceStorage: null, // MB
-      DeviceHowOften: null
+      HowOften: null
 
-    };
-
-    this.FreePlaylist = {
-      duration : null,
-      size : null
     };
 
     // Quality
@@ -58,109 +56,199 @@ class SpotifyAlgorithm{
     // HERE WE SAVE OUR FINAL DATA
     this.Result = {
       FreePrice: null,
+      SongsPlayedOnFree: null,
+      FreeTimeMusicPlayed: null,
+      AdsPlayed: null,
+      TimeAdsPlayed: null,
+      FreeStreamSize: null,
+
       StudentPrice: null,
       PremiumPrice:null,
-      FairPrice: null,
-
       SongsPlayed: null,
-      SongsPlayedOnFree: null,
-      AdsPlayed: null,
+      TimeMusicPlayed: null,
+      SongsOffline: null,
+      SongsStreamed: null,
+      PremiumStreamedSize: null,
+      PremiumOfflineSize: null,
 
+      FairPrice: null,
       ArtistMoney: null,
       LabelMoney: null,
       SpotifyMoney: null
     };
   }
 
+  //
+
+  getRandomDuration(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min +1)) + min;
+  }
+
   // CALCULATION STUFF
 
   calculate(){
 
-    // 1. Generate Playlist
-    this.generatePlaylist();
-    // 2. CalculatePlaylistData
-    this.calculatePlaylist();
-    // 3. Calculate Costs and Pricing
-    this.calculatePricing();
-    // 4. Calculate Fair & Fingerprint
-    this.calculateFair();
-  }
-
-  generatePlaylist(){
-
-    // SPOTIFY
-    // Duration = Duration / 1000 -> ms to sec
-
-    // Size
-    // this.Playlist.duration * this.Quality[this.UserInput.Quality].kbits
-
-  }
-
-  calculatePlaylist(){
-
-    if(this.API){
-      // IF API CONNECT: WE GET DURATION & SONG AMOUNT
-    }{
-      // IF NOT:
-      // HERE CALCULATION FROM PLAYLIST TIME & DURATION
-      // GET INPUT VIA this.UserInput.SongsInPlaylist
-
-      // SONG LENGTH IN SEC
-      let timePerSong = 180;
-      this.Playlist.duration = this.UserInput.SongsInPlaylist * timePerSong;
-
-      // Size in Kbit
-      this.Playlist.size = this.Playlist.duration * this.Quality[this.UserInput.Quality].kbitsSec;
-
-      console.log(this.Playlist);
-
+    // 1. Generate Playlists
+    if(!this.API){
+      this.generatePlaylists();
+    } else{
+      this.generateAPIbasedPlaylist();
     }
 
+
+    // 2. Play Playlist
+    this.playPlaylist();
+
   }
 
-  calculatePricing(){
-    // HERE WE USE THE DATA FROM PLAYLIST CALCULATION AND
-    // CALCULATE THE NEW PRICES
 
-    // Streaming Cost in kbit
-    let MobileTarifVolumeKbit = this.UserInput.MobileTarifVolume * 1024 * 1024 * 8;
-    let streamingCostPerKbit = this.UserInput.MobileTarifPrice / MobileTarifVolumeKbit;
+  generatePlaylists(){
 
-    ///////// PREMIUM
-    let Premium_dataToStream = (this.UserInput.DeviceStorage * 1024 * 8) - this.Playlist.size;
+    this.Playlist = new Playlist();
 
-    // If Data to Stream größer gleich 0 dann no streaming
-    if(Premium_dataToStream >= 0){
-      Premium_dataToStream = 0;
-    }else{
-      Premium_dataToStream = Premium_dataToStream * -1;
+    // SETTINGS
+    this.Playlist.quality = this.Quality[this.UserInput.Quality].kbitsSec;
+
+
+    // Generate PLAYLIST
+
+    for(var i = 0; i < this.UserInput.SongsInPlaylist; i++){
+
+      var n = "Catsong" + (i + 1);
+      // Zufallslänge zwischen 2,45m und 4,30
+      var d = this.getRandomDuration(165000, 270000);
+
+      this.Playlist.addSong(n, d);
+      this.Playlist.calcMetaData();
     }
 
-    // Premium Streaming Cost
-    let Premium_streamingCost = Premium_dataToStream * streamingCostPerKbit;
-
-
-    ///////// FREE
-    let Free_dataToStream = this.Playlist.size;
-
-    // Premium Streaming Cost
-    let Free_streamingCost = Free_dataToStream * streamingCostPerKbit;
-
-
-    // SAVE FINAL RESULTS:
-    // this.Result.FreePrice = 10;
-
-    this.Result.FreePrice = this.SpotifyTarife[0].price + Free_streamingCost;
-    this.Result.StudentPrice = this.SpotifyTarife[1].price + Premium_streamingCost;
-    this.Result.PremiumPrice = this.SpotifyTarife[2].price + Premium_streamingCost;
+    console.log(this.Playlist);
 
   }
 
-  calculateFair(){
-    // HERE WE USE THE (EFFECTIVE) PLAYED SONGS
-    // AND DECIDE IF WE "PAY PER HEAR"
-    // PLUS WE CALCULATE WHICH AMOUNT OF OUR MONEY GOES TO
-    // SPOTIFY OR LABEL
+
+  generateAPIbasedPlaylist(){
+    // DURATION IN MS!!!
+    console.log("API BASED PLAYLIST");
   }
+
+
+  playPlaylist(){
+
+      // OVERALL
+
+      // Play with Free Account
+      // WITH ADS AFTER 15min = 1min
+
+      var lastAd = 0;
+
+      // Mobile Volume in kbit
+      this.UserInput.MobileTarifVolume = (this.UserInput.MobileTarifVolume*1000*1000*8);
+      // Price Per Kbit Streaming
+      var streamingCostPerKbits = this.UserInput.MobileTarifPrice / this.UserInput.MobileTarifVolume;
+
+      this.Result.FreePrice = this.SpotifyTarife[0].price;
+      this.Result.FreeStreamSize = 0;
+
+      this.Result.SongsPlayedOnFree = 0;
+      this.Result.AdsPlayed = 0;
+
+      this.Result.FreeTimeMusicPlayed = 0;
+      this.Result.TimeAdsPlayed = 0;
+
+      // Premium Account
+      this.UserInput.DeviceStorage = this.UserInput.DeviceStorage * 1000 * 8;
+
+      this.Result.StudentPrice = this.SpotifyTarife[1].price;
+      this.Result.PremiumPrice = this.SpotifyTarife[2].price;
+
+      this.Result.SongsPlayed = 0;
+      this.Result.TimeMusicPlayed = 0;
+      this.Result.SongsOffline = 0;
+      this.Result.SongsStreamed = 0;
+
+      this.Result.PremiumOfflineSize = 0;
+      this.Result.PremiumStreamedSize = 0;
+
+      // PLAY
+
+      for(var times = 0; times < this.UserInput.HowOften; times++){
+
+        for(var i = 0; i < this.Playlist.songs.length; i++){
+
+          if(this.Result.FreeStreamSize + this.Playlist.songs[i].size < this.UserInput.MobileTarifVolume){
+
+            // AD? Every 15min (in ms) Music
+            if(lastAd > 900000){
+
+              // PLAY AD
+              var d = 60000;
+              var s = (d/1000) * this.Playlist.quality;
+
+              this.Result.TimeAdsPlayed += d;
+              this.Result.FreeStreamSize += s;
+              this.Result.AdsPlayed++;
+
+              this.Result.FreePrice += s * streamingCostPerKbits;
+
+              lastAd = 0;
+              i -= 1
+
+            }else{
+
+              // PLAY SONG
+
+              this.Result.FreeStreamSize += this.Playlist.songs[i].size;
+              this.Result.FreeTimeMusicPlayed += this.Playlist.songs[i].duration;
+              this.Result.SongsPlayedOnFree++;
+
+              var priceSong = (this.Playlist.songs[i].duration/1000) * streamingCostPerKbits;
+              this.Result.FreePrice += priceSong;
+
+              lastAd += this.Playlist.songs[i].duration;
+
+            }
+
+          }
+
+        }
+
+      // Play with Premium Account
+
+        for(var i = 0; i < this.Playlist.songs.length; i++){
+
+          if(this.Result.PremiumOfflineSize + this.Playlist.songs[i].size < this.UserInput.DeviceStorage){
+
+              // Make Song Offline
+
+              this.Result.PremiumOfflineSize += this.Playlist.songs[i].size;
+              this.Result.TimeMusicPlayed += this.Playlist.songs[i].duration;
+              this.Result.SongsOffline++;
+              this.Result.SongsPlayed++;
+
+
+            }else if(this.Result.PremiumStreamedSize + this.Playlist.songs[i].size < this.UserInput.MobileTarifVolume){
+
+              // Stream Song
+
+              this.Result.PremiumStreamedSize += this.Playlist.songs[i].size;
+              this.Result.TimeMusicPlayed += this.Playlist.songs[i].duration;
+              this.Result.SongsStreamed++;
+              this.Result.SongsPlayed++;
+
+              var PremiumPriceSong = (this.Playlist.songs[i].duration/1000) * streamingCostPerKbits;
+              this.Result.StudentPrice += PremiumPriceSong;
+              this.Result.PremiumPrice += PremiumPriceSong;
+
+            }
+
+
+        }
+
+      } // For Times
+  }
+
 
 }
