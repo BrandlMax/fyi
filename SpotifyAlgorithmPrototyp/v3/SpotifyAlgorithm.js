@@ -17,7 +17,7 @@ class SpotifyAlgorithm{
 
     };
 
-    this.Playlist = {
+    this.FreePlaylist = {
       duration : null,
       size : null
     };
@@ -77,13 +77,23 @@ class SpotifyAlgorithm{
   calculate(){
 
     // 1. Generate Playlist
-
+    this.generatePlaylist();
     // 2. CalculatePlaylistData
     this.calculatePlaylist();
     // 3. Calculate Costs and Pricing
     this.calculatePricing();
     // 4. Calculate Fair & Fingerprint
     this.calculateFair();
+  }
+
+  generatePlaylist(){
+
+    // SPOTIFY
+    // Duration = Duration / 1000 -> ms to sec
+
+    // Size
+    // this.Playlist.duration * this.Quality[this.UserInput.Quality].kbits
+
   }
 
   calculatePlaylist(){
