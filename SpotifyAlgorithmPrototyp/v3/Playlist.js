@@ -26,6 +26,7 @@ class Playlist{
       this.duration = this.duration + this.songs[i].duration;
       this.size = this.size + this.songs[i].size;
     }
+
   }
 }
 
@@ -33,7 +34,7 @@ class Song{
   constructor(n, d, q){
     this.name = n;
     this.duration = d; // ms
-    this.size = (d/1000) * q;
+    this.size = (d/1000) * q; // kbits
     this.offline = false;
     this.streamed = false;
   }

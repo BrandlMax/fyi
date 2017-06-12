@@ -204,7 +204,7 @@ class SpotifyAlgorithm{
               this.Result.FreeTimeMusicPlayed += this.Playlist.songs[i].duration;
               this.Result.SongsPlayedOnFree++;
 
-              var priceSong = (this.Playlist.songs[i].duration/1000) * streamingCostPerKbits;
+              var priceSong = this.Playlist.songs[i].size * streamingCostPerKbits;
               this.Result.FreePrice += priceSong;
 
               lastAd += this.Playlist.songs[i].duration;
@@ -238,7 +238,7 @@ class SpotifyAlgorithm{
               this.Result.SongsStreamed++;
               this.Result.SongsPlayed++;
 
-              var PremiumPriceSong = (this.Playlist.songs[i].duration/1000) * streamingCostPerKbits;
+              var PremiumPriceSong = this.Playlist.songs[i].size * streamingCostPerKbits;
               this.Result.StudentPrice += PremiumPriceSong;
               this.Result.PremiumPrice += PremiumPriceSong;
 
