@@ -36,7 +36,12 @@ Object.keys(ifaces).forEach(function (ifname) {
   });
 });
 
-var url = curLocalIP+':1337';
+var url = null;
+if(heroku){
+  url = 'https://spotifyi.herokuapp.com'
+}else{
+  url = curLocalIP+':1337';
+}
 
 console.log("Server Up and Running");
 console.log('Current Adress:' + url);
