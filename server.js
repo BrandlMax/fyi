@@ -5,8 +5,42 @@
 var express = require('express');
 var app = express();
 var server = app.listen(process.env.PORT || 1337);
-var url = 'http://localhost:1337';
+
+var os = require('os');
+var ifaces = os.networkInterfaces();
+
+// ###########################################
+// Get Local IP Adress
+// Thanks to https://stackoverflow.com/questions/3653065/get-local-ip-address-in-node-js
+// ###########################################
+var curLocalIP = null;
+
+Object.keys(ifaces).forEach(function (ifname) {
+  var alias = 0;
+
+  ifaces[ifname].forEach(function (iface) {
+    if ('IPv4' !== iface.family || iface.internal !== false) {
+      // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+      return;
+    }
+
+    if (alias >= 1) {
+      // this single interface has multiple ipv4 addresses
+      // console.log(ifname + ':' + alias, iface.address);
+    } else {
+      // this interface has only one ipv4 adress
+      curLocalIP = iface.address;
+      // console.log(ifname, iface.address);
+    }
+    ++alias;
+  });
+});
+
+var url = curLocalIP+':1337';
+
 console.log("Server Up and Running");
+console.log('Current Adress:' + url);
+
 
 // SOCKET
 var io = require('socket.io')(server);
@@ -40,7 +74,10 @@ app.get('/', function(req, res) {
 
 });
 
+// ###########################################
 // SOCKET CONNECTION
+// ###########################################
+
 io.on('connect', function(socket) {
 
     SSM.io = io;
@@ -67,8 +104,11 @@ io.on('connect', function(socket) {
 });
 
 
+
+// ###########################################
 // SPOTIFY CONNECTION
 // From Spotify Web API Tutorial
+// ###########################################
 
 var client_id = '215a2b57827a45bfb7bd0826bbe207da'; // Your client id
 var client_secret = '89794425f9f449a6a8a51328591b95f4'; // Your secret

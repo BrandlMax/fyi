@@ -101,6 +101,9 @@ class SpotifyAlgorithm{
     // 2. Play Playlist
     this.playPlaylist();
 
+    // 3. Calculate FairTarif
+    this.calculateFairTarif();
+
   }
 
 
@@ -119,6 +122,7 @@ class SpotifyAlgorithm{
       var n = "Catsong" + (i + 1);
       // Zufallslänge zwischen 2,45m und 4,30
       var d = this.getRandomDuration(165000, 270000);
+      // var d = 180000; // Every Song 3min
 
       this.Playlist.addSong(n, d);
       this.Playlist.calcMetaData();
@@ -143,6 +147,7 @@ class SpotifyAlgorithm{
       // WITH ADS AFTER 15min = 1min
 
       var lastAd = 0;
+      var VolumneFull = false;
 
       // Mobile Volume in kbit
       this.UserInput.MobileTarifVolume = (this.UserInput.MobileTarifVolume*1000*1000*8);
@@ -181,11 +186,11 @@ class SpotifyAlgorithm{
           if(this.Result.FreeStreamSize + this.Playlist.songs[i].size < this.UserInput.MobileTarifVolume){
 
             // AD? Every 15min (in ms) Music
-            if(lastAd > 900000){
+            if(lastAd >= 900000){
 
               // PLAY AD
-              var d = 60000;
-              var s = (d/1000) * this.Playlist.quality;
+              var d = 60000; //ms -> 1min
+              var s = (d/1000) * this.Playlist.quality; // Size of Ad: ms to sec and mal quality per sec
 
               this.Result.TimeAdsPlayed += d;
               this.Result.FreeStreamSize += s;
@@ -224,8 +229,9 @@ class SpotifyAlgorithm{
               // Make Song Offline
 
               this.Result.PremiumOfflineSize += this.Playlist.songs[i].size;
-              this.Result.TimeMusicPlayed += this.Playlist.songs[i].duration;
               this.Result.SongsOffline++;
+
+              this.Result.TimeMusicPlayed += this.Playlist.songs[i].duration;
               this.Result.SongsPlayed++;
 
 
@@ -242,12 +248,31 @@ class SpotifyAlgorithm{
               this.Result.StudentPrice += PremiumPriceSong;
               this.Result.PremiumPrice += PremiumPriceSong;
 
+              if(this.Result.PremiumStreamedSize + this.Playlist.songs[i].size > this.UserInput.MobileTarifVolume){
+                VolumneFull = true;
+                console.log("Overload");
+              }
             }
 
+        } // For Playlist
 
-        }
+
 
       } // For Times
+
+      // IF DEVICE STORAGE IS FULL (AND STREAMING)
+      if(VolumneFull){
+        console.log("Listened");
+
+        this.Result.SongsPlayed += (this.Result.SongsOffline * (this.UserInput.HowOften-1));
+        this.Result.TimeMusicPlayed += ((this.Result.PremiumOfflineSize / this.Quality[this.UserInput.Quality].kbitsSec)*1000);
+
+      }
+
+  }
+
+  calculateFairTarif(){
+
   }
 
 
