@@ -12,6 +12,7 @@ var ifaces = os.networkInterfaces();
 // ###########################################
 // Get Local IP Adress
 // Thanks to https://stackoverflow.com/questions/3653065/get-local-ip-address-in-node-js
+// For Local Testing
 // ###########################################
 var curLocalIP = null;
 
@@ -36,15 +37,16 @@ Object.keys(ifaces).forEach(function (ifname) {
   });
 });
 
-var url = null;
+// var url = curLocalIP+':1337';
+var url = curLocalIP + ":1337";
 if(heroku){
   url = 'https://spotifyi.herokuapp.com'
-}else{
-  url = curLocalIP+':1337';
 }
 
 console.log("Server Up and Running");
 console.log('Current Adress:' + url);
+console.log('Display Adress: ' + url + "/public/display");
+console.log('Mobile Adress: ' + url + "/public/mobile");
 
 
 // SOCKET
@@ -59,11 +61,11 @@ var cookieParser = require('cookie-parser');
 
 
 // Listen & auf den Public Ordner
-app.use(express.static(__dirname + '/'))
+app.use(express.static(__dirname + '/', { redirect : false }))
    .use(cookieParser());
 
 // Mobile oder Desktop?
-// https://stackoverflow.com/questions/40241878/mobile-device-detection-and-redirect-node-js
+// Thanks to https://stackoverflow.com/questions/40241878/mobile-device-detection-and-redirect-node-js
 app.get('/', function(req, res) {
 
     //console.log('User-Agent: ' + req.headers['user-agent']);
@@ -75,6 +77,7 @@ app.get('/', function(req, res) {
           '/public/display/';
 
       console.log(req.myAppPath);
+
       res.redirect(url + req.myAppPath);
 
 });

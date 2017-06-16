@@ -9,7 +9,9 @@ class SocketClientManager{
        x: 0,
        y: 0,
        userData: 0,
-       playlistData: 0
+       playlistData: 0,
+       currentStateMobile: null,
+       currentStateDesktop: null
     };
   }
 

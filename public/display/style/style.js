@@ -36,22 +36,4 @@ class Style{
 
   }
 
-  // ELEMENTE
-
-  background(){
-      background(STYLE.colors.lila.full);
-  }
-
-  RandomColorCircle(){
-    noStroke();
-    var r = floor(random(0, this.colorArray.length));
-    fill(this.colorArray[r])
-    console.log(SCM.DATA.x);
-    var x = floor(map(SCM.DATA.x, 0, 100, 0, windowWidth));
-    var y = floor(map(SCM.DATA.y, 0, 100, 0, windowHeight));
-
-
-    ellipse(x, y, 10*SCM.DATA.y, 10*SCM.DATA.y);
-  }
-
 }
