@@ -1,3 +1,5 @@
+// DISPLAY
+
 var SCM = new SocketClientManager();
 var FUNC = new Functions();
 var STYLE;
@@ -28,6 +30,20 @@ function setup() {
 
 function draw() {
   background(STYLE.colors.lila.full);
+
+  /*
+  switch(SCM.DATA.currentStateDesktop) {
+    case scene01:
+        // Here Code for Draw
+        break;
+    case scene01:
+        // Here Code for Draw
+        break;
+    default:
+        code block
+  }
+  */
+
 }
 
 function windowResized() {

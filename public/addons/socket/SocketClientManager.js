@@ -6,10 +6,18 @@ class SocketClientManager{
     this.room;
 
     this.DATA = {
-       x: 0,
-       y: 0,
-       userData: 0,
-       playlistData: 0,
+       x: 0, // Delete!
+       y: 0, // Delete!
+       userData: {
+         SongsInPlaylist: null,
+         Quality: null,
+         MobileTarifPrice: null,
+         MobileTarifVolume: null, //GB
+         MobileTarifFreeStreaming: false,
+         DeviceStorage: null, // MB
+         HowOften: null
+       },
+       playlistData: null,
        currentStateMobile: null,
        currentStateDesktop: null
     };

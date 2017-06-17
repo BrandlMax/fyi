@@ -1,12 +1,12 @@
 class SpotifyAlgorithm{
 
-  constructor(APIdata){
+  constructor(Playlist){
 
     this.API = false;
-    this.APIdata = APIdata;
+    this.APIdata = Playlist;
 
     // Create Playlist Template
-    this.Playlist = new Playlist();
+    this.Playlist = Playlist;
 
     this.UserInput = {
 

@@ -1,5 +1,6 @@
-var SCM = new SocketClientManager();
+// MOBILE
 
+var SCM = new SocketClientManager();
 
 function setup() {
 
@@ -9,6 +10,7 @@ function setup() {
   SCM.test("Hello World");
   SCM.enterRoom();
 
+  // SOCKETS
   SCM.socket.on('Message', function(msg){
     console.log(msg);
   });
@@ -26,16 +28,29 @@ function setup() {
   STYLE = new Style();
   createCanvas(windowWidth, windowHeight);
 
-  STYLE.background();
+  background(STYLE.colors.lila.full);
 }
 
 function draw() {
-
+  /*
+  switch(SCM.DATA.currentStateMobile) {
+    case scene01:
+        // Here Code for Draw
+        break;
+    case scene01:
+        // Here Code for Draw
+        break;
+    default:
+        code block
+  }
+  */
 }
 
 function touchMoved() {
+
   noStroke();
   console.log("X: " + mouseX +" Y: " + mouseY);
+
   var InputValueY = floor(map(mouseY, 0, windowHeight, 0, 100));
   var InputValueX = floor(map(mouseX, 0, windowWidth, 0, 100));
 
@@ -45,4 +60,5 @@ function touchMoved() {
   SCM.sendToServer();
   // prevent default
   return false;
+
 }

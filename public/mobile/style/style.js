@@ -30,8 +30,4 @@ class Style{
 
   // ELEMENTE
 
-  background(){
-      background(STYLE.colors.lila.full);
-  }
-
 }

@@ -38,7 +38,7 @@ Object.keys(ifaces).forEach(function (ifname) {
 });
 
 // var url = curLocalIP+':1337';
-var url = curLocalIP + ":1337";
+var url = "localhost" + ":1337";
 if(heroku){
   url = 'https://spotifyi.herokuapp.com'
 }
@@ -54,6 +54,11 @@ var io = require('socket.io')(server);
 var SocketServerManager = require('./serverTools/SocketServerManager.js');
 var SSM = new SocketServerManager();
 
+// ALGORITHM
+var SpotifyAlgorithm = require('./serverTools/SpotifyAlgorithm.js');
+var RandomPlaylist = require('./serverTools/Playlist.js');
+var SA = new SpotifyAlgorithm(RandomPlaylist);
+
 // SPOTIFY
 var request = require('request'); // "Request" library
 var querystring = require('querystring');
@@ -61,7 +66,7 @@ var cookieParser = require('cookie-parser');
 
 
 // Listen & auf den Public Ordner
-app.use(express.static(__dirname + '/', { redirect : false }))
+app.use(express.static(__dirname + '/'))
    .use(cookieParser());
 
 // Mobile oder Desktop?
@@ -77,7 +82,7 @@ app.get('/', function(req, res) {
           '/public/display/';
 
       console.log(req.myAppPath);
-
+      // To Many Redirects?
       res.redirect(url + req.myAppPath);
 
 });
