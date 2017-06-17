@@ -1,12 +1,17 @@
 // MOBILE
 
 var SCM = new SocketClientManager();
+var SPOTIFY = new SpotifyConnect();
+var FUNC;
+var STYLE;
+var SLIDES;
 
 function setup() {
 
   // CONNECTION
   SCM.connect();
   SCM.room = "kittens";
+  SCM.DATA.room = SCM.room;
   SCM.test("Hello World");
   SCM.enterRoom();
 
@@ -20,31 +25,85 @@ function setup() {
   });
 
   // SPOTIFY
-  var SPOTIFY = new SpotifyConnect();
   SPOTIFY.getParams();
   SPOTIFY.getPlaylistData();
 
+  // FUNCTION
+  FUNC = new Func();
+  FUNC.eventHandler();
   // SCREEN
   STYLE = new Style();
+  SLIDES = new Slides();
   createCanvas(windowWidth, windowHeight);
-
-  background(STYLE.colors.lila.full);
+  noStroke();
 }
 
 function draw() {
-  /*
+  // SCENE SWITCH
   switch(SCM.DATA.currentStateMobile) {
-    case scene01:
-        // Here Code for Draw
+
+    case 'Start00':
+        SLIDES.Start00();
         break;
-    case scene01:
-        // Here Code for Draw
+
+    case 'Input00':
+        SLIDES.Input00();
         break;
+
+    case 'Input01':
+        SLIDES.Input01();
+        break;
+
+    case 'Input02':
+        SLIDES.Input02();
+        break;
+
+    case 'Input03a':
+        SLIDES.Input03a();
+        break;
+
+    case 'Input03b':
+        SLIDES.Input03b();
+        break;
+
+    case 'Input04':
+        SLIDES.Input04();
+        break;
+
+    case 'Input05':
+        SLIDES.Input05();
+        break;
+
+    case 'Slide01':
+        SLIDES.Slide01();
+        break;
+
+    case 'Slide02':
+        SLIDES.Slide02();
+        break;
+
+    case 'Slide03':
+        SLIDES.Slide03();
+        break;
+
+    case 'Slide04':
+        SLIDES.Slide04();
+        break;
+
     default:
-        code block
+        console.log('No Scene Found for ' + SCM.DATA.currentStateMobile + '!');
   }
-  */
+
+  // TESTING
+  fill(STYLE.colors.blue.full);
+  ellipse(mouseX, mouseY, 100,100);
 }
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+// INTERACTION
 
 function touchMoved() {
 
@@ -56,6 +115,9 @@ function touchMoved() {
 
   SCM.DATA.x = InputValueX;
   SCM.DATA.y = InputValueY;
+
+  SCM.DATA.currentStateMobile = 'Input00';
+  SCM.DATA.currentStateDisplay = 'Input00';
 
   SCM.sendToServer();
   // prevent default

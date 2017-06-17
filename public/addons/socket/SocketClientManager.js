@@ -2,12 +2,13 @@
 
 class SocketClientManager{
   constructor(){
-    this.socket;
-    this.room;
+    this.socket = null;
+    this.room = null;
 
     this.DATA = {
        x: 0, // Delete!
        y: 0, // Delete!
+       room: null,
        userData: {
          SongsInPlaylist: null,
          Quality: null,
@@ -18,8 +19,8 @@ class SocketClientManager{
          HowOften: null
        },
        playlistData: null,
-       currentStateMobile: null,
-       currentStateDesktop: null
+       currentStateMobile: 'Start00',
+       currentStateDisplay: 'Start00'
     };
   }
 

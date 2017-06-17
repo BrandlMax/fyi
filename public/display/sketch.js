@@ -3,9 +3,9 @@
 var SCM = new SocketClientManager();
 var FUNC = new Functions();
 var STYLE;
+var SLIDES = new Slides();
 
 function setup() {
-
 
   // CONNECTION
   SCM.connect();
@@ -13,6 +13,7 @@ function setup() {
   SCM.test("Hello World");
   SCM.enterRoom();
 
+  // SOCKETS
   SCM.socket.on('Message', function(msg){
     console.log(msg);
   });
@@ -26,23 +27,42 @@ function setup() {
   // SCREEN
   STYLE = new Style();
   createCanvas(windowWidth, windowHeight);
+  noStroke();
+
 }
 
 function draw() {
-  background(STYLE.colors.lila.full);
 
-  /*
-  switch(SCM.DATA.currentStateDesktop) {
-    case scene01:
-        // Here Code for Draw
+  // SCENE SWITCH
+  switch(SCM.DATA.currentStateDisplay) {
+
+    case 'Start00':
+        SLIDES.Start00();
         break;
-    case scene01:
-        // Here Code for Draw
+
+    case 'Input00':
+        SLIDES.Input00();
         break;
+
+    case 'Slide01':
+        SLIDES.Slide01();
+        break;
+
+    case 'Slide02':
+        SLIDES.Slide02();
+        break;
+
+    case 'Slide03':
+        SLIDES.Slide03();
+        break;
+
+    case 'Slide04':
+        SLIDES.Slide04();
+        break;
+
     default:
-        code block
+        console.log('No Scene Found for ' + SCM.DATA.currentStateDisplay + '!');
   }
-  */
 
 }
 

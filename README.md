@@ -1,5 +1,8 @@
 # fyi
 
-A simulation about Spotify Premium.
+## Install
 
-Max
+open fyi folder in terminal and run:
+node server.js
+
+Follow the instructions on the terminal.

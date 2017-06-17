@@ -1,7 +1,24 @@
+/* Style Mobile */
+
 body {padding: 0; margin: 0;}
+
+#logo {
+    position: absolute;
+    z-index: 1000;
+}
+
+#logo img {
+    width: 70px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
 
 .overlay {
     font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    font-size: 2.3em;
+
     position: absolute;
     display: flex;
     align-items: center;
@@ -10,12 +27,106 @@ body {padding: 0; margin: 0;}
     justify-content: center;
 }
 
-a.btn {
-    background: #1ED760;
-    color: #fff;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-    border-radius: 20px;
+.greenBG{
+  background: #1ED760;
+}
+
+.lightBG{
+  background: #282828;
+}
+
+.blackBG{
+  background: #181818;
+}
+
+.lilaBG{
+  background: #651ed7;
+}
+
+.pinkBG{
+  background: #b21ed7;
+}
+
+.slide{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.input {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    height: 90px;
+}
+
+.half{
+  height: 50%;
+}
+
+.hide{
+  display: none;
+}
+
+.question {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#code{
+
+}
+
+input {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    font-size: 70px;
     font-weight: bold;
-    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+}
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, 0.23);
+}
+input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.23);
+}
+input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 255, 255, 0.23);
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.23);
+}
+
+.selectWrapper {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn.select {
+    height: 33%;
 }

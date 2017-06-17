@@ -13,15 +13,78 @@
     <script src="../addons/socket/SocketClientManager.js"></script>
     <script src="../addons/spotify/SpotifyConnect.js"></script>
 
-    <script src="style/style.js"></script>
+    <script src="func/func.js"></script>
+    <script src="../addons/style/style.js"></script>
+    <script src="slides/slides.js"></script>
     <script src="sketch.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style/style.css">
   </head>
   <body>
+    <div id="logo">
+      <img src="./img/fyi-logo-white.svg" alt="FYI">
+    </div>
     <div class="overlay">
-      <a href="/login" class="btn">Log in with Spotify</a>
+
+      <div id="start00" class="slide input">
+        <div class="question">Füge deinen Code ein:</div>
+        <input id="code" placeholder="0000"/>
+      </div>
+
+      <div id="input00" class="slide hide">
+        <div id="randomPlaylist" class="btn half fullwidth lightBG" onclick="FUNC.randomPlaylist()">
+          Zufalls-Playlist
+        </div>
+        <div id="spotifyPlaylist" class="btn half fullwidth greenBG" onclick="FUNC.spotifyPlaylist()">
+          Mit Spotify Verbinden (soon)
+        </div>
+      </div>
+
+      <div id="input01" class="slide input hide">
+        <div class="question">Wie viele Songs hast du in deiner Playlist?</div>
+        <input id="amountSongs" placeholder="0"/>
+        <div id="btn_amount" class="btn bottom greenBG" onclick="FUNC.amount()">
+          Weiter
+        </div>
+      </div>
+
+      <div id="input02" class="slide input hide">
+        <div class="question">Mit welcher Qualität streamst du?</div>
+          <div class="selectWrapper">
+            <div class="btn select greenBG" onclick="FUNC.quality('normal')">
+              Normal
+            </div>
+
+            <div class="btn select lilaBG" onclick="FUNC.quality('hoch')">
+              Hoch
+            </div>
+
+            <div class="btn select pinkBG" onclick="FUNC.quality('extrem')">
+              Extrem
+            </div>
+        </div>
+      </div>
+
+      <div id="input03a" class="slide input hide">
+        <div class="question">Wie groß ist dein monatliches Datenvolumen?</div>
+        <input id="dataVolume" placeholder="0"/>
+        <div id="btn_amount" class="btn bottom greenBG" onclick="FUNC.volume()">
+          Weiter
+        </div>
+      </div>
+
+      <div id="input03b" class="slide input hide">
+        <div class="question">Was zahlst Du im Monat für deinen Tarif?</div>
+        <input id="tarif" placeholder="0"/>
+        <div id="btn_amount" class="btn bottom greenBG" onclick="FUNC.tarif()">
+          Weiter
+        </div>
+      </div>
+
+      <!--
+        <a href="/login" class="btn">Log in with Spotify</a>
+      -->
     </div>
   </body>
 </html>
