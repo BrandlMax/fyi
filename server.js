@@ -5,7 +5,7 @@
 var express = require('express');
 var app = express();
 var server = app.listen(process.env.PORT || 1337);
-var heroku = false;
+var heroku = true;
 var os = require('os');
 var ifaces = os.networkInterfaces();
 

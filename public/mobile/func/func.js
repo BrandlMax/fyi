@@ -117,7 +117,7 @@ class Func{
 
   spotifyPlaylist(){
     console.log('spotifyPlaylist');
-    window.open("http://localhost:1337/login","_self");
+    window.open("https://spotifyi.herokuapp.com/login","_self");
     // SLIDES.toSlide('Input02');
   }
 
