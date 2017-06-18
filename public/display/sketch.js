@@ -2,8 +2,9 @@
 
 var SCM = new SocketClientManager();
 var FUNC = new Functions();
+var SLIDES;
 var STYLE;
-var SLIDES = new Slides();
+
 
 function setup() {
 
@@ -25,6 +26,7 @@ function setup() {
 
 
   // SCREEN
+  SLIDES = new Slides();
   STYLE = new Style();
   createCanvas(windowWidth, windowHeight);
   noStroke();
@@ -33,6 +35,7 @@ function setup() {
 
 function draw() {
 
+  SLIDES.checkOverlay();
   // SCENE SWITCH
   switch(SCM.DATA.currentStateDisplay) {
 

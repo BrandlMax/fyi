@@ -44,7 +44,7 @@
       <div id="input01" class="slide input hide">
         <div class="question">Wie viele Songs hast du in deiner Playlist?</div>
         <input id="amountSongs" placeholder="0"/>
-        <div id="btn_amount" class="btn bottom greenBG" onclick="FUNC.amount()">
+        <div class="btn bottom greenBG" onclick="FUNC.amount()">
           Weiter
         </div>
       </div>
@@ -52,24 +52,24 @@
       <div id="input02" class="slide input hide">
         <div class="question">Mit welcher Qualität streamst du?</div>
           <div class="selectWrapper">
-            <div class="btn select greenBG" onclick="FUNC.quality('normal')">
+            <div class="btn select greenBG" onclick="FUNC.quality(0)">
               Normal
             </div>
 
-            <div class="btn select lilaBG" onclick="FUNC.quality('hoch')">
+            <div class="btn select lilaBG" onclick="FUNC.quality(1)">
               Hoch
             </div>
 
-            <div class="btn select pinkBG" onclick="FUNC.quality('extrem')">
+            <div class="btn select pinkBG" onclick="FUNC.quality(2)">
               Extrem
             </div>
         </div>
       </div>
 
       <div id="input03a" class="slide input hide">
-        <div class="question">Wie groß ist dein monatliches Datenvolumen?</div>
+        <div class="question">Wie groß ist dein monatliches Datenvolumen? (in GB)</div>
         <input id="dataVolume" placeholder="0"/>
-        <div id="btn_amount" class="btn bottom greenBG" onclick="FUNC.volume()">
+        <div class="btn bottom greenBG" onclick="FUNC.volume()">
           Weiter
         </div>
       </div>
@@ -77,9 +77,41 @@
       <div id="input03b" class="slide input hide">
         <div class="question">Was zahlst Du im Monat für deinen Tarif?</div>
         <input id="tarif" placeholder="0"/>
-        <div id="btn_amount" class="btn bottom greenBG" onclick="FUNC.tarif()">
+        <div class="btn bottom greenBG" onclick="FUNC.tarif()">
           Weiter
         </div>
+      </div>
+
+      <div id="input04" class="slide input hide">
+        <div class="question">Wie viel Platz hast du auf deinem Smartphone übrig? (in MB)</div>
+        <input id="mobileStorage" placeholder="0"/>
+        <div class="btn bottom greenBG" onclick="FUNC.storage()">
+          Weiter
+        </div>
+      </div>
+
+      <div id="input05" class="slide input hide">
+        <div class="question">Wie oft hörst du die Playlist im Monat?</div>
+        <input id="howOften" placeholder="0"/>
+        <div class="btn bottom greenBG" onclick="FUNC.howoften()">
+          Weiter
+        </div>
+      </div>
+
+      <div id="slide01" class="slide input hide">
+        <div class="question">Anzahl deiner Songs</div>
+      </div>
+
+      <div id="slide02" class="slide input hide">
+        <div class="question">Länge des Musikvergnügens</div>
+      </div>
+
+      <div id="slide03" class="slide input hide">
+        <div class="question">Anzahl Ads</div>
+      </div>
+
+      <div id="slide04" class="slide input hide">
+        <div class="question">Das bekommen die Künstler</div>
       </div>
 
       <!--

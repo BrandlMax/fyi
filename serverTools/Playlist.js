@@ -47,3 +47,5 @@ class Ad{
     this.streamed = false;
   }
 }
+
+module.exports = Playlist;

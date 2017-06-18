@@ -7,7 +7,13 @@ class Slides{
       this.input02 = select('#input02');
       this.input03a = select('#input03a');
       this.input03b = select('#input03b');
+      this.input04 = select('#input04');
+      this.input05 = select('#input05');
 
+      this.slide01 = select('#slide01');
+      this.slide02 = select('#slide02');
+      this.slide03 = select('#slide03');
+      this.slide04 = select('#slide04');
   }
 
   toSlide(Slide){
@@ -20,57 +26,80 @@ class Slides{
 
         case 'Start00':
             this.start00.show();
+            this.start00.style("display", "flex");
             break;
 
         case 'Input00':
             this.start00.hide();
             this.input00.show();
+            this.input00.style("display", "flex");
             break;
 
         case 'Input01':
             this.input00.hide();
             this.input01.show();
+            this.input01.style("display", "flex");
             break;
 
         case 'Input02':
             this.input00.hide();
             this.input01.hide();
             this.input02.show();
+            this.input02.style("display", "flex");
             break;
 
         case 'Input03a':
             this.input02.hide();
             this.input03a.show();
+            this.input03a.style("display", "flex");
             break;
 
         case 'Input03b':
             this.input03a.hide();
             this.input03b.show();
+            this.input03b.style("display", "flex");
             break;
 
 
         case 'Input04':
-
+            this.input03b.hide();
+            this.input04.show();
+            this.input04.style("display", "flex");
             break;
 
         case 'Input05':
-
+            this.input04.hide();
+            this.input05.show();
+            this.input05.style("display", "flex");
             break;
 
         case 'Slide01':
-            SLIDES.Slide01();
+            this.input05.hide();
+            this.slide04.hide();
+            this.slide02.hide();
+            this.slide01.show();
+            this.slide01.style("display", "flex");
             break;
 
         case 'Slide02':
-            SLIDES.Slide02();
+            this.slide01.hide();
+            this.slide03.hide();
+            this.slide02.show();
+            this.slide02.style("display", "flex");
             break;
 
         case 'Slide03':
-            SLIDES.Slide03();
+            this.slide02.hide();
+            this.slide04.hide();
+            this.slide03.show();
+            this.slide03.style("display", "flex");
             break;
 
         case 'Slide04':
-            SLIDES.Slide04();
+            this.slide03.hide();
+            this.slide01.hide();
+            this.slide04.show();
+            this.slide04.style("display", "flex");
             break;
 
         default:
@@ -79,7 +108,13 @@ class Slides{
 
     }
 
+    // sendToServer
+    SCM.sendToServer();
+
   }
+
+
+  // CANVAS DESIGN
 
   Start00(){
     // Enter Code
@@ -111,7 +146,7 @@ class Slides{
     text('Datenvolumen & Tarif Preis',50,50,100,100);
   }
 
-  input03b(){
+  Input03b(){
     // Tarif Preis
     background(STYLE.colors.pink.full);
     text('Datenvolumen & Tarif Preis',50,50,100,100);
@@ -131,19 +166,20 @@ class Slides{
 
   Slide01(){
     // Music Amount
-    background(STYLE.colors.pink.full);
+    background(STYLE.colors.blue.full);
+    fill(STYLE.colors.pink.full);
     text('Music Amount',50,50,100,100);
   }
 
   Slide02(){
     // Music Duration
-    background(STYLE.colors.pink.full);
+    background(STYLE.colors.lila.full);
     text('Music Duration',50,50,100,100);
   }
 
   Slide03(){
     // Ads
-    background(STYLE.colors.pink.full);
+    background(STYLE.colors.green.full);
     text('Ads',50,50,100,100);
   }
 

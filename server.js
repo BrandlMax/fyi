@@ -57,7 +57,7 @@ var SSM = new SocketServerManager();
 // ALGORITHM
 var SpotifyAlgorithm = require('./serverTools/SpotifyAlgorithm.js');
 var RandomPlaylist = require('./serverTools/Playlist.js');
-var SA = new SpotifyAlgorithm(RandomPlaylist);
+var SA = new SpotifyAlgorithm();
 
 // SPOTIFY
 var request = require('request'); // "Request" library
@@ -105,6 +105,20 @@ io.on('connect', function(socket) {
 
         socket.on('fromMobile', function (data) {
           console.log(data);
+
+          // EDIT DATA
+          if(data.ready){
+            SA.API = data.api;
+            if(SA.API){
+              SA.APIdata = data.SpotifyPlaylistData;
+            }
+            console.log("ALG");
+            SA.UserInput = data.userData;
+            SA.calculate();
+            console.log(SA.Results);
+            data.results = SA.Result;
+          }
+
           SSM.sendToDisplay(data);
         });
 

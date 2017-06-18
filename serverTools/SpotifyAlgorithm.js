@@ -1,12 +1,13 @@
+var Playlist = require('./Playlist.js');
 class SpotifyAlgorithm{
 
-  constructor(Playlist){
+  constructor(randomPlaylistGenerator){
 
     this.API = false;
-    this.APIdata = Playlist;
+    this.APIdata = null;
 
     // Create Playlist Template
-    this.Playlist = Playlist;
+    this.Playlist = null;
 
     this.UserInput = {
 
@@ -128,7 +129,7 @@ class SpotifyAlgorithm{
       this.Playlist.calcMetaData();
     }
 
-    console.log(this.Playlist);
+    // console.log(this.Playlist);
 
   }
 
@@ -140,7 +141,7 @@ class SpotifyAlgorithm{
 
 
   playPlaylist(){
-
+    console.log("Play Playlist");
       // OVERALL
 
       // Play with Free Account

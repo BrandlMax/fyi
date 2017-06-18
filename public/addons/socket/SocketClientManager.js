@@ -6,8 +6,6 @@ class SocketClientManager{
     this.room = null;
 
     this.DATA = {
-       x: 0, // Delete!
-       y: 0, // Delete!
        room: null,
        userData: {
          SongsInPlaylist: null,
@@ -18,9 +16,12 @@ class SocketClientManager{
          DeviceStorage: null, // MB
          HowOften: null
        },
-       playlistData: null,
+       ready: false,
+       api: null,
+       SpotifyPlaylistData: null,
        currentStateMobile: 'Start00',
-       currentStateDisplay: 'Start00'
+       currentStateDisplay: 'Start00',
+       results: null
     };
   }
 
@@ -37,6 +38,7 @@ class SocketClientManager{
   }
 
   sendToServer(){
+    console.log("Send Data");
     console.log(this.DATA);
     this.socket.emit('fromMobile', this.DATA);
   }
