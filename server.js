@@ -5,9 +5,12 @@
 var express = require('express');
 var app = express();
 var server = app.listen(process.env.PORT || 1337);
-var heroku = true;
+var heroku = false;
 var os = require('os');
 var ifaces = os.networkInterfaces();
+
+var API_access_token = null;
+var API_refresh_token = null;
 
 // ###########################################
 // Get Local IP Adress
@@ -38,7 +41,7 @@ Object.keys(ifaces).forEach(function (ifname) {
 });
 
 // var url = curLocalIP+':1337';
-var url = "localhost" + ":1337";
+var url = "http://localhost" + ":1337";
 if(heroku){
   url = 'https://spotifyi.herokuapp.com'
 }
@@ -106,6 +109,13 @@ io.on('connect', function(socket) {
         socket.on('fromMobile', function (data) {
           console.log(data);
 
+          data.url = url;
+
+          if(API_access_token !== null){
+            data.access_token = API_access_token;
+            data.refresh_token = API_refresh_token;
+          }
+
           // EDIT DATA
           if(data.ready){
             SA.API = data.api;
@@ -120,6 +130,7 @@ io.on('connect', function(socket) {
           }
 
           SSM.sendToDisplay(data);
+          SSM.sendToMobile(data);
         });
 
         socket.on('disconnect', function (room) {
@@ -211,6 +222,9 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
+            API_access_token = access_token;
+            API_refresh_token = refresh_token;
+
         var options = {
           url: 'https://api.spotify.com/v1/me',
           headers: { 'Authorization': 'Bearer ' + access_token },
@@ -224,21 +238,21 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
-          querystring.stringify({
-            access_token: access_token,
-            refresh_token: refresh_token
-          }));
+
+        res.redirect(url + '/public/callbackKiller');
+
       } else {
+        /*
         res.redirect('/#' +
           querystring.stringify({
             error: 'invalid_token'
           }));
+          */
+          console.log('ivalid_token!');
       }
     });
   }
 });
-
 app.get('/refresh_token', function(req, res) {
 
   // requesting access token from refresh token

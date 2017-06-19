@@ -20,8 +20,9 @@ function setup() {
     console.log(msg);
   });
 
-  SCM.socket.on('APIMobile', function(data){
+  SCM.socket.on('Mobile', function(data){
     console.log(data);
+    SCM.DATA = data;
   });
 
   // SPOTIFY

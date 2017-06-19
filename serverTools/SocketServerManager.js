@@ -4,12 +4,12 @@ class SocketServerManager{
           user: 0
       };
 
-      this.InsideRoom;
+      this.InsideRoom = null;
 
-      this.io;
-      this.socket;
+      this.io = null;
+      this.socket = null;
 
-      this.room;
+      this.room = null;
 
       this.api = 0;
   }
@@ -69,7 +69,11 @@ class SocketServerManager{
   sendToDisplay(data){
     this.io.sockets.in(this.room).emit('Display', data);
   }
-  
+
+  sendToMobile(data){
+    this.io.sockets.in(this.room).emit('Mobile', data);
+  }
+
 }
 
 module.exports = SocketServerManager;

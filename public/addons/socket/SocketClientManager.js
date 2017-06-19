@@ -6,6 +6,7 @@ class SocketClientManager{
     this.room = null;
 
     this.DATA = {
+       url: null,
        room: null,
        userData: {
          SongsInPlaylist: null,
@@ -17,6 +18,8 @@ class SocketClientManager{
          HowOften: null
        },
        ready: false,
+       access_token:  null,
+       refresh_token: null,
        api: null,
        SpotifyPlaylistData: null,
        currentStateMobile: 'Start00',
@@ -42,6 +45,5 @@ class SocketClientManager{
     console.log(this.DATA);
     this.socket.emit('fromMobile', this.DATA);
   }
-
 
 }

@@ -137,6 +137,7 @@ class SpotifyAlgorithm{
   generateAPIbasedPlaylist(){
     // DURATION IN MS!!!
     console.log("API BASED PLAYLIST");
+
   }
 
 

@@ -117,8 +117,32 @@ class Func{
 
   spotifyPlaylist(){
     console.log('spotifyPlaylist');
-    window.open("https://spotifyi.herokuapp.com/login","_self");
-    // SLIDES.toSlide('Input02');
+    window.open(SCM.DATA.url+"/login","_blank");
+    this.getUserPlaylists();
+    SLIDES.toSlide('Input02');
+  }
+
+  getUserPlaylists(){
+    // Get All Playlists of User
+    setTimeout(function(){
+      SCM.sendToServer();
+      $.ajax({
+          url: 'https://api.spotify.com/v1/me',
+          headers: {
+            'Authorization': 'Bearer ' + SCM.DATA.access_token
+          },
+          success: function(response) {
+            console.log(SCM.DATA.access_token);
+            console.log(response);
+          }
+      });
+      SCM.DATA.api = true;
+    }, 3000 );
+
+  }
+
+  getPlaylistData(PlaylistID){
+    // All Data from Playlist
   }
 
   amount(){
