@@ -2,6 +2,7 @@
 
 var SCM = new SocketClientManager();
 var FUNC = new Functions();
+var GRID;
 var SLIDES;
 var STYLE;
 
@@ -26,6 +27,7 @@ function setup() {
 
 
   // SCREEN
+  GRID = new Grid();
   SLIDES = new Slides();
   STYLE = new Style();
   createCanvas(windowWidth, windowHeight);

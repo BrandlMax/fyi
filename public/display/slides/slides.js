@@ -10,7 +10,7 @@ class Slides{
     this.slide03 = select('#slide03');
     this.slide04 = select('#slide04');
 
-    // RESULTS
+    // RESULTS AREAS
     this.amount = select("#amount");
     this.amount1 = select("#amount1");
 
@@ -22,6 +22,20 @@ class Slides{
 
     this.artist = select("#artist");
     this.artist1 = select("#artist1");
+
+    // RESULTS COMPAPRE
+
+    this.cd = null;
+    this.showers = null;
+    this.traffic = null;
+    this.fair = null;
+  }
+
+  reCalc(){
+    this.cd = floor(SCM.DATA.results.SongsPlayed/10);
+    this.showers = floor(SCM.DATA.results.TimeMusicPlayed/1000/60/10);
+    this.traffic = floor(SCM.DATA.results.TimeAdsPlayed/1000/60);
+    this.fair = floor(1);
   }
 
   checkOverlay(){
@@ -78,7 +92,7 @@ class Slides{
             this.slide01.style("display", "flex");
 
             this.amount.html(SCM.DATA.results.SongsPlayed);
-            this.amount1.html(floor(SCM.DATA.results.SongsPlayed/10));
+            this.amount1.html(this.cd);
             break;
 
         case 'Slide02':
@@ -88,7 +102,7 @@ class Slides{
             this.slide02.style("display", "flex");
 
             this.duration.html(floor(SCM.DATA.results.TimeMusicPlayed/1000/60));
-            this.duration1.html(floor(SCM.DATA.results.TimeMusicPlayed/1000/60/15));
+            this.duration1.html(this.showers);
             break;
 
         case 'Slide03':
@@ -98,7 +112,7 @@ class Slides{
             this.slide03.style("display", "flex");
 
             this.ads.html(SCM.DATA.results.AdsPlayed);
-            this.ads1.html(floor(SCM.DATA.results.TimeAdsPlayed/1000/60));
+            this.ads1.html(this.traffic);
             break;
 
         case 'Slide04':
@@ -108,7 +122,7 @@ class Slides{
             this.slide04.style("display", "flex");
 
             this.artist.html("0");
-            this.artist1.html(floor(0));
+            this.artist1.html(this.fair);
             break;
 
         default:
@@ -140,6 +154,8 @@ class Slides{
     background(STYLE.colors.blue.full);
     fill(STYLE.colors.pink.full);
     text('Music Amount',50,50,100,100);
+    this.reCalc();
+    GRID.drawIt(this.cd,"💿");
   }
 
   Slide02(){
@@ -147,6 +163,8 @@ class Slides{
     background(STYLE.colors.lila.full);
     fill(STYLE.colors.pink.full);
     text('Music Duration',50,50,100,100);
+    this.reCalc();
+    GRID.drawIt(this.showers,"🛀");
   }
 
   Slide03(){
@@ -154,6 +172,8 @@ class Slides{
     background(STYLE.colors.green.full);
     fill(STYLE.colors.blue.full);
     text('Ads',50,50,100,100);
+    this.reCalc();
+    GRID.drawIt(this.traffic,"🚗");
   }
 
   Slide04(){
@@ -161,6 +181,8 @@ class Slides{
     background(STYLE.colors.pink.full);
     fill(STYLE.colors.blue.full);
     text('Artist',50,50,100,100);
+    this.reCalc();
+    GRID.drawIt(this.fair,"🍞");
   }
 
 }
