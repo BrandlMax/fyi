@@ -139,21 +139,21 @@ class Slides{
     // Waiting for Connection
     background(STYLE.colors.lila.full);
     fill(STYLE.colors.blue.full);
-    text('Waiting / Code',50,50,100,100);
+    //text('Waiting / Code',50,50,100,100);
   }
 
   Input00(){
     // Inputs
     background(STYLE.colors.pink.full);
     fill(STYLE.colors.green.full);
-    text('Inputs',50,50,100,100);
+    //text('Inputs',50,50,100,100);
   }
 
   Slide01(){
     // Music Amount
     background(STYLE.colors.blue.full);
     fill(STYLE.colors.pink.full);
-    text('Music Amount',50,50,100,100);
+    //text('Music Amount',50,50,100,100);
     this.reCalc();
     GRID.drawIt(this.cd,"💿");
   }
@@ -162,7 +162,7 @@ class Slides{
     // Music Duration
     background(STYLE.colors.lila.full);
     fill(STYLE.colors.pink.full);
-    text('Music Duration',50,50,100,100);
+    //text('Music Duration',50,50,100,100);
     this.reCalc();
     GRID.drawIt(this.showers,"🛀");
   }
@@ -171,7 +171,7 @@ class Slides{
     // Ads
     background(STYLE.colors.green.full);
     fill(STYLE.colors.blue.full);
-    text('Ads',50,50,100,100);
+    //text('Ads',50,50,100,100);
     this.reCalc();
     GRID.drawIt(this.traffic,"🚗");
   }
@@ -180,7 +180,7 @@ class Slides{
     // Artist
     background(STYLE.colors.pink.full);
     fill(STYLE.colors.blue.full);
-    text('Artist',50,50,100,100);
+    //text('Artist',50,50,100,100);
     this.reCalc();
     GRID.drawIt(this.fair,"🍞");
   }

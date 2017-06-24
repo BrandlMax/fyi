@@ -40,6 +40,7 @@ function setup() {
 }
 
 function draw() {
+  clear();
   // SCENE SWITCH
   switch(SCM.DATA.currentStateMobile) {
 
@@ -90,6 +91,15 @@ function draw() {
     case 'Slide04':
         SLIDES.Slide04();
         break;
+
+    case 'editMode':
+        SLIDES.editMode();
+        break;
+
+    case 'closeEdit':
+        SLIDES.editMode();
+        break;
+
 
     default:
         console.log('No Scene Found for ' + SCM.DATA.currentStateMobile + '!');

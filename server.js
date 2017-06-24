@@ -118,13 +118,18 @@ io.on('connect', function(socket) {
 
           // EDIT DATA
           if(data.ready){
+            // USE API?
             SA.API = data.api;
+            // YES?
             if(SA.API){
               SA.APIdata = data.SpotifyPlaylistData;
             }
+
             console.log("ALG");
             SA.UserInput = data.userData;
+
             SA.calculate();
+
             console.log(SA.Results);
             data.results = SA.Result;
           }

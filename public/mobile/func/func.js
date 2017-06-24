@@ -19,6 +19,9 @@ class Func{
     // SAVE DATA FOR function
     this.swipeXstart = null;
     this.swipeYstart = null;
+
+    // EDIT fix
+    this.lastCur = null;
   }
 
   eventHandler(){
@@ -28,6 +31,38 @@ class Func{
       if($(this).val() == SCM.DATA.room){
         SLIDES.toSlide('Input00');
       }
+    });
+
+    // EDIT MODE
+    
+    $("#e_amountSongs").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+      SCM.DATA.userData.SongsInPlaylist = $("#e_amountSongs").val();
+      SCM.sendToServer();
+    });
+
+    $("#e_quality").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+      SCM.DATA.userData.Quality = $("#e_quality").val();
+      SCM.sendToServer();
+    });
+
+    $("#e_dataVolume").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+      SCM.DATA.userData.MobileTarifPrice = $("#e_dataVolume").val();
+      SCM.sendToServer();
+    });
+
+    $("#e_tarif").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+      SCM.DATA.userData.MobileTarifFreeStreaming = $("#e_tarif").val();
+      SCM.sendToServer();
+    });
+
+    $("#e_mobileStorage").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+      SCM.DATA.userData.DeviceStorage = $("#e_mobileStorage").val();
+      SCM.sendToServer();
+    });
+
+    $("#e_howOften").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+      SCM.DATA.userData.HowOften = $("#e_howOften").val();
+      SCM.sendToServer();
     });
 
     // SWIPES
@@ -174,7 +209,17 @@ class Func{
     SCM.DATA.userData.HowOften = $("#howOften").val();
     SCM.DATA.ready = true;
     SLIDES.toSlide('Slide01');
+  }
 
+  editMode(cur){
+    console.log(cur);
+    this.lastCur = cur;
+    SLIDES.toSlide('editMode');
+  }
+
+  closeEdit(cur){
+    SLIDES.toSlide('closeEdit');
+    SLIDES.toSlide(this.lastCur);
   }
 
 }

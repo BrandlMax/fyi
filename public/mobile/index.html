@@ -19,6 +19,8 @@
     <script src="sketch.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style/style.css">
   </head>
   <body>
@@ -43,7 +45,7 @@
 
       <div id="input01" class="slide input hide">
         <div class="question">Wie viele Songs hast du in deiner Playlist?</div>
-        <input id="amountSongs" placeholder="0"/>
+        <input type="number" id="amountSongs" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.amount()">
           Weiter
         </div>
@@ -68,7 +70,7 @@
 
       <div id="input03a" class="slide input hide">
         <div class="question">Wie groß ist dein monatliches Datenvolumen? (in GB)</div>
-        <input id="dataVolume" placeholder="0"/>
+        <input type="number" id="dataVolume" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.volume()">
           Weiter
         </div>
@@ -76,7 +78,7 @@
 
       <div id="input03b" class="slide input hide">
         <div class="question">Was zahlst Du im Monat für deinen Tarif?</div>
-        <input id="tarif" placeholder="0"/>
+        <input type="number" id="tarif" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.tarif()">
           Weiter
         </div>
@@ -84,7 +86,7 @@
 
       <div id="input04" class="slide input hide">
         <div class="question">Wie viel Platz hast du auf deinem Smartphone übrig? (in MB)</div>
-        <input id="mobileStorage" placeholder="0"/>
+        <input type="number" id="mobileStorage" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.storage()">
           Weiter
         </div>
@@ -92,31 +94,78 @@
 
       <div id="input05" class="slide input hide">
         <div class="question">Wie oft hörst du die Playlist im Monat?</div>
-        <input id="howOften" placeholder="0"/>
+        <input type="number" id="howOften" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.howoften()">
           Weiter
         </div>
       </div>
 
       <div id="slide01" class="slide input hide">
+        <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
         <div class="question">Anzahl deiner Songs</div>
       </div>
 
       <div id="slide02" class="slide input hide">
+        <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
         <div class="question">Länge des Musikvergnügens</div>
       </div>
 
       <div id="slide03" class="slide input hide">
+        <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
         <div class="question">Anzahl Ads</div>
       </div>
 
       <div id="slide04" class="slide input hide">
+        <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
         <div class="question">Das bekommen die Künstler</div>
       </div>
 
-      <!--
-        <a href="/login" class="btn">Log in with Spotify</a>
-      -->
+
+      <div id="edit" class="slide input hide pinkBG">
+        <div id="close" class="fab" onclick="FUNC.closeEdit();"><i class="material-icons">close</i></div>
+        <div class="inputarea greenBG">
+          Anzahl Songs
+          <input type="number" id="e_amountSongs" placeholder="0"/>
+        </div>
+
+        <div class="inputarea lilaBG">
+          Qualität
+          <select class="ddown" id="e_quality" name="e_quality">
+            <option value="0">Normal</option>
+            <option value="1">Hoch</option>
+            <option value="2">Extrem</option>
+          </select>
+        </div>
+
+        <div class="inputarea greenBG">
+          Mobile Volumen
+          <input type="number" id="e_dataVolume" placeholder="0"/>
+        </div>
+
+        <div class="inputarea lilaBG">
+          Tarif Preis
+          <input type="number" id="e_tarif" placeholder="0"/>
+        </div>
+
+        <div class="inputarea greenBG">
+          Speicher
+          <input type="number" id="e_mobileStorage" placeholder="0"/>
+        </div>
+
+        <div class="inputarea lilaBG">
+          Wiederholungen
+          <input type="number" id="e_howOften" placeholder="0"/>
+        </div>
+
+
+
+
+
+
+
+      </div>
+
+
     </div>
   </body>
 </html>
