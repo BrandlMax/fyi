@@ -13,7 +13,7 @@ class Grid{
   }
 
   drawIt(amount, e){
-    console.log("DrawIt");
+    //console.log("DrawIt");
     this.e = e;
     if(amount >= 10000){
       this.amount = 10000;

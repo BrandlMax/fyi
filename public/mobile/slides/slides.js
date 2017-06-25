@@ -21,6 +21,7 @@ class Slides{
   toSlide(Slide){
 
     if(Slide != SCM.DATA.currentStateMobile){
+      SCM.DATA.oldState = SCM.DATA.currentStateMobile;
       SCM.DATA.currentStateMobile = Slide;
 
       // SCENE SWITCH

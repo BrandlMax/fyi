@@ -41,6 +41,7 @@ class Slides{
   checkOverlay(){
 
     if(SCM.DATA.currentStateMobile != SCM.DATA.currentStateDisplay){
+
        SCM.DATA.currentStateDisplay = SCM.DATA.currentStateMobile;
 
       // SCENE SWITCH
@@ -125,6 +126,21 @@ class Slides{
             this.artist1.html(this.fair);
             break;
 
+        case 'editMode':
+            this.reCalc();
+            this.amount.html(SCM.DATA.results.SongsPlayed);
+            this.amount1.html(this.cd);
+
+            this.duration.html(floor(SCM.DATA.results.TimeMusicPlayed/1000/60));
+            this.duration1.html(this.showers);
+
+            this.ads.html(SCM.DATA.results.AdsPlayed);
+            this.ads1.html(this.traffic);
+
+            this.artist.html("0");
+            this.artist1.html(this.fair);
+            break;
+
         default:
             console.log('No Scene Found for ' + SCM.DATA.currentStateMobile + '!');
       }
@@ -184,5 +200,26 @@ class Slides{
     this.reCalc();
     GRID.drawIt(this.fair,"🍞");
   }
+
+  editMode(){
+    switch(SCM.DATA.oldState) {
+      case 'Slide01':
+      this.Slide01();
+      break;
+
+      case 'Slide02':
+      this.Slide02();
+      break;
+
+      case 'Slide03':
+      this.Slide03();
+      break;
+
+      case 'Slide04':
+      this.Slide04();
+      break;
+    }
+  }
+
 
 }

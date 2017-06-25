@@ -128,6 +128,7 @@ io.on('connect', function(socket) {
             console.log("ALG");
             SA.UserInput = data.userData;
 
+
             SA.calculate();
 
             console.log(SA.Results);

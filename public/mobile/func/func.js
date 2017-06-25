@@ -27,41 +27,47 @@ class Func{
   eventHandler(){
 
     console.log("eventHandler Listens");
-    $("#code").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+    $("#code").bind('keyup keydown keypress DOMAttrModified propertychange oninput',function(){
       if($(this).val() == SCM.DATA.room){
         SLIDES.toSlide('Input00');
       }
     });
 
     // EDIT MODE
-    
-    $("#e_amountSongs").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+
+    $("#e_amountSongs").bind('keyup keydown keypress DOMAttrModified propertychange oninput',function(){
       SCM.DATA.userData.SongsInPlaylist = $("#e_amountSongs").val();
+      SCM.DATA.change = true;
       SCM.sendToServer();
     });
 
-    $("#e_quality").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+    $("#e_quality").change(function(){
       SCM.DATA.userData.Quality = $("#e_quality").val();
+      SCM.DATA.change = true;
       SCM.sendToServer();
     });
 
-    $("#e_dataVolume").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
-      SCM.DATA.userData.MobileTarifPrice = $("#e_dataVolume").val();
+    $("#e_dataVolume").bind('keyup keydown keypress DOMAttrModified propertychange oninput',function(){
+      SCM.DATA.userData.MobileTarifVolume = $("#e_dataVolume").val();
+      SCM.DATA.change = true;
       SCM.sendToServer();
     });
 
-    $("#e_tarif").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
-      SCM.DATA.userData.MobileTarifFreeStreaming = $("#e_tarif").val();
+    $("#e_tarif").bind('keyup keydown keypress DOMAttrModified propertychange oninput',function(){
+      SCM.DATA.userData.MobileTarifPrice = $("#e_tarif").val();
+      SCM.DATA.change = true;
       SCM.sendToServer();
     });
 
-    $("#e_mobileStorage").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+    $("#e_mobileStorage").bind('keyup keydown keypress DOMAttrModified propertychange oninput',function(){
       SCM.DATA.userData.DeviceStorage = $("#e_mobileStorage").val();
+      SCM.DATA.change = true;
       SCM.sendToServer();
     });
 
-    $("#e_howOften").bind('keyup keydown keypress DOMAttrModified propertychange',function(){
+    $("#e_howOften").bind('keyup keydown keypress DOMAttrModified propertychange oninput',function(){
       SCM.DATA.userData.HowOften = $("#e_howOften").val();
+      SCM.DATA.change = true;
       SCM.sendToServer();
     });
 
@@ -147,6 +153,7 @@ class Func{
   randomPlaylist(){
     console.log('randomPlaylist');
     SCM.DATA.api = false;
+    SCM.DATA.change = true;
     SLIDES.toSlide('Input01');
   }
 
@@ -154,6 +161,7 @@ class Func{
     console.log('spotifyPlaylist');
     window.open(SCM.DATA.url+"/login","_blank");
     this.getUserPlaylists();
+    SCM.DATA.change = true;
     SLIDES.toSlide('Input02');
   }
 
@@ -182,31 +190,37 @@ class Func{
 
   amount(){
       SCM.DATA.userData.SongsInPlaylist = $("#amountSongs").val();
+      SCM.DATA.change = true;
       SLIDES.toSlide('Input02');
   }
 
   quality(quality){
     SCM.DATA.userData.Quality = quality;
+    SCM.DATA.change = true;
     SLIDES.toSlide('Input03a');
   }
 
   volume(){
     SCM.DATA.userData.MobileTarifVolume = $("#dataVolume").val();
+    SCM.DATA.change = true;
     SLIDES.toSlide('Input03b');
   }
 
   tarif(){
     SCM.DATA.userData.MobileTarifPrice = $("#tarif").val();
+    SCM.DATA.change = true;
     SLIDES.toSlide('Input04');
   }
 
   storage(){
     SCM.DATA.userData.DeviceStorage = $("#mobileStorage").val();
+    SCM.DATA.change = true;
     SLIDES.toSlide('Input05');
   }
 
   howoften(){
     SCM.DATA.userData.HowOften = $("#howOften").val();
+    SCM.DATA.change = true;
     SCM.DATA.ready = true;
     SLIDES.toSlide('Slide01');
   }
@@ -214,6 +228,24 @@ class Func{
   editMode(cur){
     console.log(cur);
     this.lastCur = cur;
+
+    $("#e_amountSongs").attr("placeholder", SCM.DATA.userData.SongsInPlaylist);
+    $("#e_amountSongs").val(SCM.DATA.userData.SongsInPlaylist);
+
+    $("#e_quality").val(SCM.DATA.userData.Quality);
+
+    $("#e_dataVolume").attr("placeholder", SCM.DATA.userData.MobileTarifVolume);
+    $("#e_dataVolume").val(SCM.DATA.userData.MobileTarifVolume);
+
+    $("#e_tarif").attr("placeholder", SCM.DATA.userData.MobileTarifPrice);
+    $("#e_tarif").val(SCM.DATA.userData.MobileTarifPrice);
+
+    $("#e_mobileStorage").attr("placeholder", SCM.DATA.userData.DeviceStorage);
+    $("#e_mobileStorage").val(SCM.DATA.userData.DeviceStorage);
+
+    $("#e_howOften").attr("placeholder", SCM.DATA.userData.HowOften);
+    $("#e_howOften").val(SCM.DATA.userData.HowOften);
+
     SLIDES.toSlide('editMode');
   }
 

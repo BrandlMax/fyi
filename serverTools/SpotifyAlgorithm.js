@@ -152,9 +152,9 @@ class SpotifyAlgorithm{
       var VolumneFull = false;
 
       // Mobile Volume in kbit
-      this.UserInput.MobileTarifVolume = (this.UserInput.MobileTarifVolume*1000*1000*8);
+      var MobileTarifVolumeinKbits = (this.UserInput.MobileTarifVolume*1000*1000*8);
       // Price Per Kbit Streaming
-      var streamingCostPerKbits = this.UserInput.MobileTarifPrice / this.UserInput.MobileTarifVolume;
+      var streamingCostPerKbits = this.UserInput.MobileTarifPrice / MobileTarifVolumeinKbits;
 
       this.Result.FreePrice = this.SpotifyTarife[0].price;
       this.Result.FreeStreamSize = 0;
@@ -166,7 +166,7 @@ class SpotifyAlgorithm{
       this.Result.TimeAdsPlayed = 0;
 
       // Premium Account
-      this.UserInput.DeviceStorage = this.UserInput.DeviceStorage * 1000 * 8;
+      var DeviceStorageinKbits = this.UserInput.DeviceStorage * 1000 * 8;
 
       this.Result.StudentPrice = this.SpotifyTarife[1].price;
       this.Result.PremiumPrice = this.SpotifyTarife[2].price;
@@ -185,7 +185,7 @@ class SpotifyAlgorithm{
 
         for(var i = 0; i < this.Playlist.songs.length; i++){
 
-          if(this.Result.FreeStreamSize + this.Playlist.songs[i].size < this.UserInput.MobileTarifVolume){
+          if(this.Result.FreeStreamSize + this.Playlist.songs[i].size < MobileTarifVolumeinKbits){
 
             // AD? Every 15min (in ms) Music
             if(lastAd >= 900000){
@@ -226,7 +226,7 @@ class SpotifyAlgorithm{
 
         for(var i = 0; i < this.Playlist.songs.length; i++){
 
-          if(this.Result.PremiumOfflineSize + this.Playlist.songs[i].size < this.UserInput.DeviceStorage){
+          if(this.Result.PremiumOfflineSize + this.Playlist.songs[i].size < DeviceStorageinKbits){
 
               // Make Song Offline
 
@@ -237,7 +237,7 @@ class SpotifyAlgorithm{
               this.Result.SongsPlayed++;
 
 
-            }else if(this.Result.PremiumStreamedSize + this.Playlist.songs[i].size < this.UserInput.MobileTarifVolume){
+            }else if(this.Result.PremiumStreamedSize + this.Playlist.songs[i].size < MobileTarifVolumeinKbits){
 
               // Stream Song
 
@@ -250,7 +250,7 @@ class SpotifyAlgorithm{
               this.Result.StudentPrice += PremiumPriceSong;
               this.Result.PremiumPrice += PremiumPriceSong;
 
-              if(this.Result.PremiumStreamedSize + this.Playlist.songs[i].size > this.UserInput.MobileTarifVolume){
+              if(this.Result.PremiumStreamedSize + this.Playlist.songs[i].size > MobileTarifVolumeinKbits){
                 VolumneFull = true;
                 console.log("Overload");
               }

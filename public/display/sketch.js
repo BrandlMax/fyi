@@ -36,7 +36,7 @@ function setup() {
 }
 
 function draw() {
-
+  clear();
   SLIDES.checkOverlay();
   // SCENE SWITCH
   switch(SCM.DATA.currentStateDisplay) {
@@ -63,6 +63,10 @@ function draw() {
 
     case 'Slide04':
         SLIDES.Slide04();
+        break;
+
+    case 'editMode':
+        SLIDES.editMode();
         break;
 
     default:

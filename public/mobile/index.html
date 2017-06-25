@@ -45,7 +45,7 @@
 
       <div id="input01" class="slide input hide">
         <div class="question">Wie viele Songs hast du in deiner Playlist?</div>
-        <input type="number" id="amountSongs" placeholder="0" required/>
+        <input type="number" id="amountSongs" max="1000" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.amount()">
           Weiter
         </div>
@@ -70,7 +70,7 @@
 
       <div id="input03a" class="slide input hide">
         <div class="question">Wie groß ist dein monatliches Datenvolumen? (in GB)</div>
-        <input type="number" id="dataVolume" placeholder="0" required/>
+        <input type="number" id="dataVolume" max="20" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.volume()">
           Weiter
         </div>
@@ -78,7 +78,7 @@
 
       <div id="input03b" class="slide input hide">
         <div class="question">Was zahlst Du im Monat für deinen Tarif?</div>
-        <input type="number" id="tarif" placeholder="0" required/>
+        <input type="number" id="tarif" max="100" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.tarif()">
           Weiter
         </div>
@@ -86,7 +86,7 @@
 
       <div id="input04" class="slide input hide">
         <div class="question">Wie viel Platz hast du auf deinem Smartphone übrig? (in MB)</div>
-        <input type="number" id="mobileStorage" placeholder="0" required/>
+        <input type="number" id="mobileStorage" max="10000" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.storage()">
           Weiter
         </div>
@@ -94,7 +94,7 @@
 
       <div id="input05" class="slide input hide">
         <div class="question">Wie oft hörst du die Playlist im Monat?</div>
-        <input type="number" id="howOften" placeholder="0" required/>
+        <input type="number" id="howOften" max="10" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.howoften()">
           Weiter
         </div>
@@ -103,29 +103,35 @@
       <div id="slide01" class="slide input hide">
         <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
         <div class="question">Anzahl deiner Songs</div>
+        <div class="emoticon">💿</div>
       </div>
 
       <div id="slide02" class="slide input hide">
         <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
         <div class="question">Länge des Musikvergnügens</div>
+        <div class="emoticon">🛀</div>
       </div>
 
       <div id="slide03" class="slide input hide">
         <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
         <div class="question">Anzahl Ads</div>
+        <div class="emoticon">🚗</div>
       </div>
 
       <div id="slide04" class="slide input hide">
         <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
         <div class="question">Das bekommen die Künstler</div>
+        <div class="emoticon">🍞</div>
+
       </div>
 
 
       <div id="edit" class="slide input hide pinkBG">
+
         <div id="close" class="fab" onclick="FUNC.closeEdit();"><i class="material-icons">close</i></div>
         <div class="inputarea greenBG">
           Anzahl Songs
-          <input type="number" id="e_amountSongs" placeholder="0"/>
+          <input type="number" id="e_amountSongs" max="1000" placeholder="0"/>
         </div>
 
         <div class="inputarea lilaBG">
@@ -154,17 +160,12 @@
 
         <div class="inputarea lilaBG">
           Wiederholungen
-          <input type="number" id="e_howOften" placeholder="0"/>
+          <input type="number" id="e_howOften" max="10" placeholder="0"/>
         </div>
-
-
-
-
-
-
 
       </div>
 
+  </div>
 
     </div>
   </body>

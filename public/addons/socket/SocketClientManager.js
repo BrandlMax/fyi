@@ -4,6 +4,8 @@ class SocketClientManager{
   constructor(){
     this.socket = null;
     this.room = null;
+    this.change = true;
+    this.oldState = null;
 
     this.DATA = {
        url: null,
