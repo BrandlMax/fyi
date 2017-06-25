@@ -106,6 +106,7 @@ input {
     font-weight: bold;
     text-align: center;
     color: #fff;
+    width: 100%
 }
 
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
