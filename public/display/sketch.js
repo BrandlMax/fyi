@@ -6,14 +6,19 @@ var GRID;
 var SLIDES;
 var STYLE;
 
+function preload(){
+
+}
+
 
 function setup() {
 
   // CONNECTION
   SCM.connect();
-  SCM.room = "kittens";
+  SCM.room = floor(random(1000,9999));
   SCM.test("Hello World");
   SCM.enterRoom();
+  SCM.socket.emit('roomID', SCM.room);
 
   // SOCKETS
   SCM.socket.on('Message', function(msg){
@@ -43,6 +48,7 @@ function draw() {
 
     case 'Start00':
         SLIDES.Start00();
+        SLIDES.code.html(SCM.room);
         break;
 
     case 'Input00':

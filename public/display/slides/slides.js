@@ -10,6 +10,10 @@ class Slides{
     this.slide03 = select('#slide03');
     this.slide04 = select('#slide04');
 
+    // CODE
+
+    this.code = select("#code");
+
     // RESULTS AREAS
     this.amount = select("#amount");
     this.amount1 = select("#amount1");
@@ -28,14 +32,20 @@ class Slides{
     this.cd = null;
     this.showers = null;
     this.traffic = null;
+
     this.fair = null;
+    this.artistmoney = null;
   }
 
   reCalc(){
-    this.cd = floor(SCM.DATA.results.SongsPlayed/10);
-    this.showers = floor(SCM.DATA.results.TimeMusicPlayed/1000/60/10);
+    this.cd = floor(SCM.DATA.results.SongsPlayed/12); // 12 Songs per CD
+    this.showers = floor(SCM.DATA.results.TimeMusicPlayed/1000/60/10); // 10 mins per Shower
     this.traffic = floor(SCM.DATA.results.TimeAdsPlayed/1000/60);
-    this.fair = floor(1);
+
+    // Fair Slide
+    this.artistmoney = Math.round(0.0038456 * SCM.DATA.results.SongsPlayed * 100) / 100;
+    this.fair = floor(this.artistmoney/(5/8)); //per Play 0.0038456
+
   }
 
   checkOverlay(){
@@ -51,6 +61,7 @@ class Slides{
             console.log("start");
             this.start00.show();
             this.start00.style("display", "flex");
+            this.code.html(SCM.DATA.room);
             break;
 
         case 'Input00':
@@ -122,7 +133,7 @@ class Slides{
             this.slide04.show();
             this.slide04.style("display", "flex");
 
-            this.artist.html("0");
+            this.artist.html(this.artistmoney);
             this.artist1.html(this.fair);
             break;
 
@@ -137,7 +148,7 @@ class Slides{
             this.ads.html(SCM.DATA.results.AdsPlayed);
             this.ads1.html(this.traffic);
 
-            this.artist.html("0");
+            this.artist.html(this.artistmoney);
             this.artist1.html(this.fair);
             break;
 
@@ -155,6 +166,7 @@ class Slides{
     // Waiting for Connection
     background(STYLE.colors.lila.full);
     fill(STYLE.colors.blue.full);
+    // GRID.drawIt(100,"🎧");
     //text('Waiting / Code',50,50,100,100);
   }
 

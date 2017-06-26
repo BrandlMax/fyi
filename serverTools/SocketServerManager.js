@@ -74,6 +74,10 @@ class SocketServerManager{
     this.io.sockets.in(this.room).emit('Mobile', data);
   }
 
+  sendRoomID(data){
+    this.io.sockets.emit('roomID', data);
+  }
+
 }
 
 module.exports = SocketServerManager;
