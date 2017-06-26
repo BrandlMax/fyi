@@ -99,8 +99,14 @@ io.on('connect', function(socket) {
     SSM.io = io;
     SSM.socket = socket;
     SSM.newUser();
+    SSM.sendRoomID(SSM.room);
 
     // ROOM MANAGEMENT
+    socket.on('roomID', function (data) {
+      SSM.room = data;
+      SSM.sendRoomID(SSM.room);
+    });
+
     // ENTER ROOM
     socket.on('room', function(room) {
         SSM.joinRoom(room);

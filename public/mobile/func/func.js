@@ -26,11 +26,48 @@ class Func{
 
   eventHandler(){
 
+    // For closing Keyboard
+    /* http://uihacker.blogspot.de/2011/10/javascript-hide-ios-soft-keyboard.html */
+    var hideKeyboard = function() {
+       document.activeElement.blur();
+       var inputs = document.querySelectorAll('input');
+       for(var i=0; i < inputs.length; i++) {
+        inputs[i].blur();
+       }
+       console.log("Hide Keyboard");
+    };
+
     console.log("eventHandler Listens");
     $("#code").bind('keyup keydown keypress DOMAttrModified propertychange oninput',function(){
-      if($(this).val() == SCM.DATA.room){
+
+      if($(this).val() == SCM.room){
+        SCM.enterRoom();
+        SCM.DATA.room = SCM.room;
+        hideKeyboard();
         SLIDES.toSlide('Input00');
       }
+    });
+
+    // DONE BUTTON IOS FIX
+
+    $('#amountSongs').focusout(function(e) {
+        FUNC.amount();
+    });
+
+    $('#dataVolume').focusout(function(e) {
+        FUNC.volume();
+    });
+
+    $('#tarif').focusout(function(e) {
+        FUNC.tarif();
+    });
+
+    $('#mobileStorage').focusout(function(e) {
+        FUNC.storage();
+    });
+
+    $('#howOften').focusout(function(e) {
+        FUNC.howoften();
     });
 
     // EDIT MODE
@@ -72,80 +109,128 @@ class Func{
     });
 
     // SWIPES
+    var tolerance = 100;
+
     // Slide01
     this.slide01.touchStarted(function(){
       this.swipeXstart = mouseX;
+      console.log("S: Touch Started: " + this.swipeXstart);
+      console.log("S: TouchXEnd: " + swipeXend);
     });
 
     this.slide01.touchEnded(function(){
       var swipeXend = mouseX;
+      console.log((this.swipeXstart-swipeXend));
 
-      if(this.swipeXstart > swipeXend){
+      if(this.swipeXstart > swipeXend && (this.swipeXstart-swipeXend) > tolerance){
         console.log("Swipe Left (next)");
         SLIDES.toSlide('Slide02');
         this.swipeXstart = null;
-      }else if(this.swipeXstart < swipeXend){
+
+      }else if(this.swipeXstart < swipeXend && -1*(this.swipeXstart-swipeXend) > tolerance){
         console.log("Swipe Right (before)");
         SLIDES.toSlide('Slide04');
         this.swipeXstart = null;
+
+      }else{
+        this.swipeXstart = null;
       }
+      this.swipeXstart = null;
+      swipeXend = null;
+      console.log("E: Touch Started: " + this.swipeXstart);
+      console.log("E: TouchXEnd: " + swipeXend);
+
     });
 
     // Slide02
     this.slide02.touchStarted(function(){
       this.swipeXstart = mouseX;
+      console.log("S: Touch Started: " + this.swipeXstart);
+      console.log("S: TouchXEnd: " + swipeXend);
     });
 
     this.slide02.touchEnded(function(){
       var swipeXend = mouseX;
+      console.log((this.swipeXstart-swipeXend));
 
-      if(this.swipeXstart > swipeXend){
+      if(this.swipeXstart > swipeXend && (this.swipeXstart-swipeXend) > tolerance){
         console.log("Swipe Left (next)");
         SLIDES.toSlide('Slide03');
         this.swipeXstart = null;
-      }else if(this.swipeXstart < swipeXend){
+
+      }else if(this.swipeXstart < swipeXend && -1*(this.swipeXstart-swipeXend) > tolerance){
         console.log("Swipe Right (before)");
         SLIDES.toSlide('Slide01');
         this.swipeXstart = null;
+      }else{
+        this.swipeXstart = null;
       }
+      this.swipeXstart = null;
+      swipeXend = null;
+      console.log("E: Touch Started: " + this.swipeXstart);
+      console.log("E: TouchXEnd: " + swipeXend);
+
     });
 
     // Slide03
     this.slide03.touchStarted(function(){
       this.swipeXstart = mouseX;
+      console.log("S: Touch Started: " + this.swipeXstart);
+      console.log("S: TouchXEnd: " + swipeXend);
     });
 
     this.slide03.touchEnded(function(){
       var swipeXend = mouseX;
+      console.log((this.swipeXstart-swipeXend));
 
-      if(this.swipeXstart > swipeXend){
+      if(this.swipeXstart > swipeXend && (this.swipeXstart-swipeXend) > tolerance){
         console.log("Swipe Left (next)");
         SLIDES.toSlide('Slide04');
         this.swipeXstart = null;
-      }else if(this.swipeXstart < swipeXend){
+
+      }else if(this.swipeXstart < swipeXend && -1*(this.swipeXstart-swipeXend) > tolerance){
         console.log("Swipe Right (before)");
         SLIDES.toSlide('Slide02');
         this.swipeXstart = null;
+      }else{
+        this.swipeXstart = null;
       }
+      this.swipeXstart = null;
+      swipeXend = null;
+      console.log("E: Touch Started: " + this.swipeXstart);
+      console.log("E: TouchXEnd: " + swipeXend);
+
     });
 
     // Slide04
     this.slide04.touchStarted(function(){
       this.swipeXstart = mouseX;
+      console.log("S: Touch Started: " + this.swipeXstart);
+      console.log("S: TouchXEnd: " + swipeXend);
     });
 
     this.slide04.touchEnded(function(){
+
       var swipeXend = mouseX;
 
-      if(this.swipeXstart > swipeXend){
+      console.log((this.swipeXstart-swipeXend));
+
+      if(this.swipeXstart > swipeXend && (this.swipeXstart-swipeXend) > tolerance){
         console.log("Swipe Left (next)");
         SLIDES.toSlide('Slide01');
         this.swipeXstart = null;
-      }else if(this.swipeXstart < swipeXend){
+
+      }else if(this.swipeXstart < swipeXend && -1*(this.swipeXstart-swipeXend) > tolerance){
         console.log("Swipe Right (before)");
         SLIDES.toSlide('Slide03');
         this.swipeXstart = null;
+      }else{
+        this.swipeXstart = null;
       }
+      this.swipeXstart = null;
+      swipeXend = null;
+      console.log("E: Touch Started: " + this.swipeXstart);
+      console.log("E: TouchXEnd: " + swipeXend);
     });
 
   }

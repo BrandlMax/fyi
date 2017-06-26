@@ -107,3 +107,34 @@ em {
 .graphic{
   width: 100%;
 }
+
+.bubbles {
+    background: #fff;
+    color: #b12695;
+    border-radius: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 30px;
+}
+
+.url{
+  height: 400px;
+  width: 420px;
+  margin-top: -120px;
+}
+
+.code {
+    height: 280px;
+    width: 300px;
+    flex-direction: column;
+    margin-left: -170px;
+    margin-top: 330px;
+}
+
+#start00 {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}

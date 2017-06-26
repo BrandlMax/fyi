@@ -10,12 +10,12 @@ function setup() {
 
   // CONNECTION
   SCM.connect();
-  SCM.room = "kittens";
-  SCM.DATA.room = SCM.room;
-  SCM.test("Hello World");
-  SCM.enterRoom();
 
   // SOCKETS
+  SCM.socket.on('roomID', function (data) {
+    SCM.room = data;
+  });
+  
   SCM.socket.on('Message', function(msg){
     console.log(msg);
   });
@@ -106,8 +106,10 @@ function draw() {
   }
 
   // TESTING
+  /*
   fill(STYLE.colors.blue.full);
   ellipse(mouseX, mouseY, 100,100);
+  */
 }
 
 function windowResized() {
