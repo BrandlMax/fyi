@@ -8,8 +8,8 @@ body {padding: 0; margin: 0;}
 
 #logo img {
     width: 70px;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 26px;
+    margin-left: 26px;
 }
 
 .overlay {
@@ -62,27 +62,30 @@ body {padding: 0; margin: 0;}
 }
 
 .info {
-    width: 100%;
-    background: #fff;
-    color: #b12695;
-    border-radius: 200px;
-    height: 280px;
-    width: 280px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 30px;
+  width: 100%;
+  background: #fff;
+  color: #b12695;
+  border-radius: 300px;
+  height: 280px;
+  width: 280px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 30px;
+  padding: 20px;
 }
 
 .info.compare {
-
+    margin-top: 100px;
 }
 
 .info.result {
-    margin-top: -120px;
-    margin-right: -50px;
+    margin-top: -180px;
+    margin-right: -65px;
+    width: 300px;
+    height: 300px;
 }
 
 .emoticircle {
@@ -94,9 +97,8 @@ body {padding: 0; margin: 0;}
     align-items: center;
     justify-content: center;
     font-size: 50px;
-
-    margin-left: -80px;
-    margin-top: 160px;
+    margin-left: -110px;
+    margin-top: -210px;
 }
 
 em {
@@ -117,6 +119,26 @@ em {
     align-items: center;
     padding-top: 20px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 30px;
+}
+
+.parameter {
+    width: 500px;
+    height: 480px;
+}
+
+.onMobile {
+    background: #fff;
+    height: 106px;
+    width: 110px;
+    border-radius: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    margin-left: 260px;
+    margin-top: -90px;
+    padding-top: 10px;
+    padding-right: 6px;
 }
 
 .url{

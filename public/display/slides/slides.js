@@ -210,7 +210,7 @@ class Slides{
     fill(STYLE.colors.blue.full);
     //text('Artist',50,50,100,100);
     this.reCalc();
-    GRID.drawIt(this.fair,"🍞");
+    GRID.drawIt(this.fair,"🍕");
   }
 
   editMode(){

@@ -13,8 +13,8 @@ body {
 
 #logo img {
     width: 70px;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .overlay {
@@ -78,6 +78,7 @@ body {
   align-items: center;
   width: 100%;
   cursor: pointer;
+  font-size: 30px;
 }
 
 .bottom {
@@ -95,11 +96,13 @@ body {
 }
 
 .question {
-    height: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 45%;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  font-size: 30px;
 }
 
 #code{
@@ -115,7 +118,7 @@ input {
     color: #fff;
     width: 100%;
     padding: 0;
-    border-radius: 0px; 
+    border-radius: 0px;
 }
 
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -215,4 +218,34 @@ i.material-icons {
     font-size: 50px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 30px;
     margin-top: -50px;
+}
+
+.navarea{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  position: absolute;
+  top: 50%;
+}
+
+.left{
+  background: #fff;
+  color: #000;
+  width: 50px;
+  height: 50px;
+  border-radius: 300px;
+  margin-left: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 30px;
+}
+
+.right{
+  background: #fff;
+  color: #000;
+  width: 50px;
+  height: 50px;
+  border-radius: 300px;
+  margin-right: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 30px;
 }
