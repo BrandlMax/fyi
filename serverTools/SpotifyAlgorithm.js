@@ -8,6 +8,7 @@ class SpotifyAlgorithm{
 
     // Create Playlist Template
     this.Playlist = null;
+    this.OldSongsInPlaylist = null;
 
     this.UserInput = {
 
@@ -93,7 +94,10 @@ class SpotifyAlgorithm{
 
     // 1. Generate Playlists
     if(!this.API){
-      this.generatePlaylists();
+      if(this.UserInput.SongsInPlaylist != this.OldSongsInPlaylist){
+        this.generatePlaylists();
+        this.OldSongsInPlaylist = this.UserInput.SongsInPlaylist;
+      }
     } else{
       this.generateAPIbasedPlaylist();
     }

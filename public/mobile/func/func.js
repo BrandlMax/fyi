@@ -109,6 +109,8 @@ class Func{
     });
 
     // SWIPES
+
+    /*
     var tolerance = 100;
 
     // Slide01
@@ -232,6 +234,8 @@ class Func{
       console.log("E: Touch Started: " + this.swipeXstart);
       console.log("E: TouchXEnd: " + swipeXend);
     });
+
+    */
 
   }
 
