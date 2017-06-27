@@ -160,3 +160,7 @@ em {
     align-items: center;
     flex-direction: row;
 }
+
+em#sTarifArea {
+    font-size: 50px;
+}

@@ -37,25 +37,11 @@ class Grid{
     this.EmojiWidth = Math.ceil(this.w / this.RepeatX);
 
 
-    // this.s = map(this.amount, 1, 4000, 120, 1);
     this.s = this.EmojiHeight/2;
     if(this.s > 120){
       this.s = 120;
     }
 
-/*
-    console.log({
-      eH: this.h / this.RepeatX,
-      eHf: this.EmojiHeight,
-      eW: this.w / this.RepeatX,
-      eWf: this.EmojiWidth,
-      rX : this.RepeatX,
-      rY : this.RepeatY,
-      sqrt: Math.sqrt(this.amount),
-      sqrtRound: Math.round(Math.sqrt(this.amount)),
-      nr : (2 * Math.round(this.amount / 2))
-    });
-*/
   }
 
   drawEmojis(){

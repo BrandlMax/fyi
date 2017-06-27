@@ -3,6 +3,7 @@ class Slides{
   constructor(){
       this.start00 = select('#start00');
       this.input00 = select('#input00');
+      this.input00a = select('#input00a');
       this.input01 = select('#input01');
       this.input02 = select('#input02');
       this.input03a = select('#input03a');
@@ -14,6 +15,7 @@ class Slides{
       this.slide02 = select('#slide02');
       this.slide03 = select('#slide03');
       this.slide04 = select('#slide04');
+      this.slide05 = select('#slide05');
 
       this.edit = select('#edit');
   }
@@ -38,8 +40,14 @@ class Slides{
             this.input00.style("display", "flex");
             break;
 
-        case 'Input01':
+        case 'Input00a':
             this.input00.hide();
+            this.input00a.show();
+            this.input00a.style("display", "flex");
+            break;
+
+        case 'Input01':
+            this.input00a.hide();
             this.input01.show();
             this.input01.style("display", "flex");
             break;
@@ -78,6 +86,7 @@ class Slides{
 
         case 'Slide01':
             this.input05.hide();
+            this.slide05.hide();
             this.slide04.hide();
             this.slide02.hide();
             this.slide01.show();
@@ -99,10 +108,18 @@ class Slides{
             break;
 
         case 'Slide04':
+            this.slide05.hide();
             this.slide03.hide();
             this.slide01.hide();
             this.slide04.show();
             this.slide04.style("display", "flex");
+            break;
+
+        case 'Slide05':
+            this.slide04.hide();
+            this.slide01.hide();
+            this.slide05.show();
+            this.slide05.style("display", "flex");
             break;
 
         case 'editMode':
@@ -135,6 +152,12 @@ class Slides{
   }
 
   Input00(){
+    // Spotify oder Random?
+    background(STYLE.colors.pink.full);
+    //text('Spotify oder Random?',50,50,100,100);
+  }
+
+  Input00a(){
     // Spotify oder Random?
     background(STYLE.colors.pink.full);
     //text('Spotify oder Random?',50,50,100,100);
@@ -194,6 +217,11 @@ class Slides{
 
   Slide04(){
     // Artist
+    background(STYLE.colors.pink.full);
+  }
+
+  Slide05(){
+    // Pizza
     background(STYLE.colors.pink.full);
   }
 

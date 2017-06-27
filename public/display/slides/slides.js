@@ -9,7 +9,7 @@ class Slides{
     this.slide02 = select('#slide02');
     this.slide03 = select('#slide03');
     this.slide04 = select('#slide04');
-    this.slide04 = select('#slide05');
+    this.slide05 = select('#slide05');
 
     // CODE
 
@@ -28,9 +28,9 @@ class Slides{
     this.artist = select("#artist");
     this.artist1 = select("#artist1");
 
-    this.sTarifArea = select("#sTarif");
-    this.sPriceArea = select("#sPrice");
-    this.beerArea = select("#beer");
+    this.sTarifArea = select("#sTarifArea");
+    this.sPriceArea = select("#sPriceArea");
+    this.beerArea = select("#beerArea");
 
     // RESULTS COMPAPRE
 
@@ -59,16 +59,14 @@ class Slides{
     this.sTarif = SCM.DATA.userData.Tarif;
 
     if(this.sTarif == "Premium"){
-      this.sPrice = SCM.DATA.results.PremiumPrice;
+      this.sPrice = Math.round(SCM.DATA.results.PremiumPrice * 100) / 100;
     } else if(this.sTarif == "Student"){
-      this.sPrice = SCM.DATA.results.StudentPrice;
+      this.sPrice = Math.round(SCM.DATA.results.StudentPrice * 100) / 100;
     } else{
-      this.sPrice = SCM.DATA.results.FreePrice;
+      this.sPrice = Math.round(SCM.DATA.results.FreePrice * 100) / 100;
     }
 
-    // Price Beer 4€
-    this.beer = floor(this.sPrice / 4);
-
+    this.beer = floor(this.sPrice / 4);  // Price Beer 4€
 
   }
 
@@ -95,11 +93,11 @@ class Slides{
             this.input00.style("display", "flex");
             break;
 
-        case 'Input01':
+        case 'Input00a':
             SCM.DATA.currentStateDisplay = 'Input00';
             break;
 
-        case 'Input01a':
+        case 'Input01':
             SCM.DATA.currentStateDisplay = 'Input00';
             break;
 
@@ -127,6 +125,7 @@ class Slides{
         case 'Slide01':
             this.input00.hide();
             this.slide04.hide();
+            this.slide05.hide();
             this.slide02.hide();
             this.slide01.show();
             this.slide01.style("display", "flex");
@@ -158,10 +157,11 @@ class Slides{
         case 'Slide04':
             this.slide03.hide();
             this.slide01.hide();
+            this.slide05.hide();
             this.slide04.show();
             this.slide04.style("display", "flex");
 
-            this.artist.html(this.artistmoney);
+            this.artist.html(this.artistmoney + "€");
             this.artist1.html(this.fair);
             break;
 
@@ -172,12 +172,17 @@ class Slides{
             this.slide05.style("display", "flex");
 
             this.sTarifArea.html(this.sTarif);
-            this.sPriceArea.html(this.sPrice);
+            this.sPriceArea.html(this.sPrice + "€");
             this.beerArea.html(this.beer);
             break;
 
         case 'editMode':
             this.reCalc();
+
+            this.sTarifArea.html(this.sTarif);
+            this.sPriceArea.html(this.sPrice + "€");
+            this.beerArea.html(this.beer);
+
             this.amount.html(SCM.DATA.results.SongsPlayed);
             this.amount1.html(this.cd);
 
@@ -277,6 +282,10 @@ class Slides{
 
       case 'Slide04':
       this.Slide04();
+      break;
+
+      case 'Slide05':
+      this.Slide05();
       break;
     }
   }

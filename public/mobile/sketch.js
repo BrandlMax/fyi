@@ -15,7 +15,7 @@ function setup() {
   SCM.socket.on('roomID', function (data) {
     SCM.room = data;
   });
-  
+
   SCM.socket.on('Message', function(msg){
     console.log(msg);
   });
@@ -50,6 +50,10 @@ function draw() {
 
     case 'Input00':
         SLIDES.Input00();
+        break;
+
+    case 'Input00a':
+        SLIDES.Input00a();
         break;
 
     case 'Input01':
@@ -90,6 +94,10 @@ function draw() {
 
     case 'Slide04':
         SLIDES.Slide04();
+        break;
+
+    case 'Slide05':
+        SLIDES.Slide05();
         break;
 
     case 'editMode':
