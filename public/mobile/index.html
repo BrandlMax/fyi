@@ -34,7 +34,7 @@
 
       <div id="start00" class="slide input">
         <div class="question">Füge deinen Code ein:</div>
-        <input id="code" placeholder="0000"/>
+        <input id="code" type="number" pattern="\d*" placeholder="0000"/>
       </div>
 
       <div id="input00" class="slide hide">
@@ -47,9 +47,28 @@
         </div>
       </div>
 
+
+      <div id="input00a" class="slide input hide">
+        <div class="question">Welchen Spotify Tarif hast du?</div>
+          <div class="selectWrapper">
+            <div class="btn select greenBG" onclick="FUNC.sTarif('Premium')">
+              Premium
+            </div>
+
+            <div class="btn select lilaBG" onclick="FUNC.sTarif('Student')">
+              Student
+            </div>
+
+            <div class="btn select pinkBG" onclick="FUNC.sTarif('Free')">
+              Free
+            </div>
+        </div>
+      </div>
+
+
       <div id="input01" class="slide input hide">
         <div class="question">Wie viele Songs hast du in deiner Playlist?</div>
-        <input type="number" id="amountSongs" max="1000" placeholder="0" required/>
+        <input type="number" pattern="\d*" id="amountSongs" max="1000" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.amount()">
           Weiter
         </div>
@@ -74,7 +93,7 @@
 
       <div id="input03a" class="slide input hide">
         <div class="question">Wie groß ist dein monatliches Datenvolumen? (in GB)</div>
-        <input type="number" id="dataVolume" max="20" placeholder="0" required/>
+        <input type="number" pattern="\d*" id="dataVolume" max="20" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.volume()">
           Weiter
         </div>
@@ -82,7 +101,7 @@
 
       <div id="input03b" class="slide input hide">
         <div class="question">Was zahlst Du im Monat für deinen Tarif?</div>
-        <input type="number" id="tarif" max="100" placeholder="0" required/>
+        <input type="number" pattern="\d*" id="tarif" max="100" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.tarif()">
           Weiter
         </div>
@@ -90,7 +109,7 @@
 
       <div id="input04" class="slide input hide">
         <div class="question">Wie viel Platz hast du auf deinem Smartphone übrig? (in MB)</div>
-        <input type="number" id="mobileStorage" max="10000" placeholder="0" required/>
+        <input type="number" pattern="\d*" id="mobileStorage" max="10000" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.storage()">
           Weiter
         </div>
@@ -98,7 +117,7 @@
 
       <div id="input05" class="slide input hide">
         <div class="question">Wie oft hörst du die Playlist im Monat?</div>
-        <input type="number" id="howOften" max="10" placeholder="0" required/>
+        <input type="number" pattern="\d*" id="howOften" max="10" placeholder="0" required/>
         <div class="btn bottom greenBG" onclick="FUNC.howoften()">
           Weiter
         </div>
@@ -109,7 +128,7 @@
         <div class="question">Anzahl deiner Songs</div>
         <div class="emoticon">💿</div>
         <div class="navarea">
-          <div class="left" onclick="SLIDES.toSlide('Slide04');"><i class="material-icons">navigate_before</i></div>
+          <div class="left" onclick="SLIDES.toSlide('Slide05');"><i class="material-icons">navigate_before</i></div>
           <div class="right" onclick="SLIDES.toSlide('Slide02');"><i class="material-icons">navigate_next</i></div>
         </div>
       </div>
@@ -140,6 +159,16 @@
         <div class="emoticon">🍕</div>
         <div class="navarea">
           <div class="left" onclick="SLIDES.toSlide('Slide03');"><i class="material-icons">navigate_before</i></div>
+          <div class="right" onclick="SLIDES.toSlide('Slide05');"><i class="material-icons">navigate_next</i></div>
+        </div>
+      </div>
+
+      <div id="slide05" class="slide input hide">
+        <div id="openEdit" class="fab" onclick="FUNC.editMode(SCM.DATA.currentStateMobile);"><i class="material-icons">settings</i></div>
+        <div class="question">Spotify Tarif</div>
+        <div class="emoticon">🍺</div>
+        <div class="navarea">
+          <div class="left" onclick="SLIDES.toSlide('Slide04');"><i class="material-icons">navigate_before</i></div>
           <div class="right" onclick="SLIDES.toSlide('Slide01');"><i class="material-icons">navigate_next</i></div>
         </div>
       </div>
@@ -148,6 +177,17 @@
       <div id="edit" class="slide input hide pinkBG">
 
         <div id="close" class="fab" onclick="FUNC.closeEdit();"><i class="material-icons">close</i></div>
+
+        <div class="inputarea lilaBG">
+          Tarif
+          <select class="ddown" id="e_sTarif" name="e_sTarif">
+            <option value="Premium">Premium</option>
+            <option value="Student">Student</option>
+            <option value="Free">Free</option>
+          </select>
+        </div>
+
+
         <div class="inputarea greenBG">
           Anzahl Songs
           <input type="number" id="e_amountSongs" max="1000" placeholder="0"/>
@@ -164,22 +204,22 @@
 
         <div class="inputarea greenBG">
           Mobile Volumen
-          <input type="number" id="e_dataVolume" placeholder="0"/>
+          <input type="number" pattern="\d*" id="e_dataVolume" placeholder="0"/>
         </div>
 
         <div class="inputarea lilaBG">
           Tarif Preis
-          <input type="number" id="e_tarif" placeholder="0"/>
+          <input type="number" pattern="\d*" id="e_tarif" placeholder="0"/>
         </div>
 
         <div class="inputarea greenBG">
           Speicher
-          <input type="number" id="e_mobileStorage" placeholder="0"/>
+          <input type="number" pattern="\d*" id="e_mobileStorage" placeholder="0"/>
         </div>
 
         <div class="inputarea lilaBG">
           Wiederholungen
-          <input type="number" id="e_howOften" max="10" placeholder="0"/>
+          <input type="number" pattern="\d*" id="e_howOften" max="10" placeholder="0"/>
         </div>
 
       </div>

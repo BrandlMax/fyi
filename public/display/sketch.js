@@ -71,6 +71,10 @@ function draw() {
         SLIDES.Slide04();
         break;
 
+    case 'Slide05':
+        SLIDES.Slide05();
+        break;
+
     case 'editMode':
         SLIDES.editMode();
         break;

@@ -4,6 +4,7 @@ class Func{
     // Elements: Only for the EventsHandler
     this.start00 = select('#start00');
     this.input00 = select('#input00');
+    this.input00a = select('#input00a');
     this.input01 = select('#input01');
     this.input02 = select('#input02');
     this.input03a = select('#input03a');
@@ -71,6 +72,13 @@ class Func{
     });
 
     // EDIT MODE
+
+    $("#e_sTarif").change(function(){
+      SCM.DATA.userData.Tarif = $("#e_sTarif").val();
+      SCM.DATA.change = true;
+      SCM.sendToServer();
+    });
+
 
     $("#e_amountSongs").bind('keyup keydown keypress DOMAttrModified propertychange oninput',function(){
       SCM.DATA.userData.SongsInPlaylist = $("#e_amountSongs").val();
@@ -243,7 +251,7 @@ class Func{
     console.log('randomPlaylist');
     SCM.DATA.api = false;
     SCM.DATA.change = true;
-    SLIDES.toSlide('Input01');
+    SLIDES.toSlide('Input00a');
   }
 
   spotifyPlaylist(){
@@ -275,6 +283,11 @@ class Func{
 
   getPlaylistData(PlaylistID){
     // All Data from Playlist
+  }
+
+  sTarif(tarif){
+    SCM.DATA.userData.Tarif = tarif;
+    SLIDES.toSlide('Input01');
   }
 
   amount(){
@@ -317,6 +330,8 @@ class Func{
   editMode(cur){
     console.log(cur);
     this.lastCur = cur;
+
+    $("#e_sTarif").val(SCM.DATA.userData.Tarif);
 
     $("#e_amountSongs").attr("placeholder", SCM.DATA.userData.SongsInPlaylist);
     $("#e_amountSongs").val(SCM.DATA.userData.SongsInPlaylist);

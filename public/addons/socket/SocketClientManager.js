@@ -17,7 +17,8 @@ class SocketClientManager{
          MobileTarifVolume: null, //GB
          MobileTarifFreeStreaming: false,
          DeviceStorage: null, // MB
-         HowOften: null
+         HowOften: null,
+         Tarif: null
        },
        ready: false,
        access_token:  null,
