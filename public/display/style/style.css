@@ -12,6 +12,57 @@ body {padding: 0; margin: 0;}
     margin-left: 26px;
 }
 
+
+.greenBG{
+  background: #1ED760;
+}
+
+.blueBG{
+  background: #3FBFE9;
+}
+
+.lightBG{
+  background: #282828;
+}
+
+.blackBG{
+  background: #181818;
+}
+
+.darkpurpleBG{
+  background: #641ED8;
+}
+
+.purpleBG{
+  background: #B31D96;
+}
+
+.yellowBG{
+  background: #FED226;
+}
+
+.orangeBG{
+  background: #FB4C1D;
+}
+
+.pinkBG{
+  background: #EB3A99;
+}
+
+.black30{
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.black20{
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.black10{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+
+
 .overlay {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;

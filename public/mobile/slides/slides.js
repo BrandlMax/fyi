@@ -147,87 +147,87 @@ class Slides{
 
   Start00(){
     // Enter Code
-    background(STYLE.colors.lila.full);
+    //background(STYLE.colors.lila.full);
     //text('Enter Code',50,50,100,100);
   }
 
   Input00(){
     // Spotify oder Random?
-    background(STYLE.colors.pink.full);
+    //background(STYLE.colors.pink.full);
     //text('Spotify oder Random?',50,50,100,100);
   }
 
   Input00a(){
     // Spotify oder Random?
-    background(STYLE.colors.pink.full);
+    //background(STYLE.colors.pink.full);
     //text('Spotify oder Random?',50,50,100,100);
   }
 
   Input01(){
     // Songs in Playlist
-    background(STYLE.colors.pink.full);
+    //background(STYLE.colors.pink.full);
     //text('Songs in Playlist',50,50,100,100);
   }
 
   Input02(){
     // Quality
-    background(STYLE.colors.pink.full);
+    //background(STYLE.colors.pink.full);
     //text('Quality',50,50,100,100);
   }
 
   Input03a(){
     // Datenvolumen
-    background(STYLE.colors.pink.full);
+    //background(STYLE.colors.pink.full);
     //text('Datenvolumen & Tarif Preis',50,50,100,100);
   }
 
   Input03b(){
     // Tarif Preis
-    background(STYLE.colors.pink.full);
+    //background(STYLE.colors.pink.full);
     //text('Datenvolumen & Tarif Preis',50,50,100,100);
   }
 
   Input04(){
     // Speicher auf dem Smartphone
-    background(STYLE.colors.pink.full);
+    // background(STYLE.colors.pink.full);
     //text('Speicher auf dem Smartphone',50,50,100,100);
   }
 
   Input05(){
     // Wie oft die Playlist gehört wird
-    background(STYLE.colors.pink.full);
+    // background(STYLE.colors.pink.full);
     //text('Wie oft die Playlist gehört wird',50,50,100,100);
   }
 
   Slide01(){
     // Music Amount
-    background(STYLE.colors.blue.full);
+    //background(STYLE.colors.blue.full);
     fill(STYLE.colors.pink.full);
   }
 
   Slide02(){
     // Music Duration
-    background(STYLE.colors.lila.full);
+    // background(STYLE.colors.lila.full);
   }
 
   Slide03(){
     // Ads
-    background(STYLE.colors.green.full);
+    // background(STYLE.colors.green.full);
   }
 
   Slide04(){
     // Artist
-    background(STYLE.colors.pink.full);
+    // background(STYLE.colors.pink.full);
   }
 
   Slide05(){
     // Pizza
-    background(STYLE.colors.pink.full);
+    //background(STYLE.colors.pink.full);
   }
 
   editMode(){
     // Artist
-    background(STYLE.colors.pink.full);
+    //background(STYLE.colors.pink.full);
   }
 
 }
