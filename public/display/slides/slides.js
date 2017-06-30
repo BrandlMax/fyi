@@ -223,7 +223,7 @@ class Slides{
 
   Slide01(){
     // Music Amount
-    background(STYLE.colorArray[2]);
+    background(STYLE.colorArray[5]);
     fill(STYLE.colors.pink.full);
     //text('Music Amount',50,50,100,100);
     this.reCalc();
@@ -236,7 +236,7 @@ class Slides{
     fill(STYLE.colors.pink.full);
     //text('Music Duration',50,50,100,100);
     this.reCalc();
-    GRID.drawIt(this.showers,"🛀");
+    GRID.drawIt(this.showers,"🛁");
   }
 
   Slide03(){
@@ -245,7 +245,7 @@ class Slides{
     fill(STYLE.colors.blue.full);
     //text('Ads',50,50,100,100);
     this.reCalc();
-    GRID.drawIt(this.traffic,"🚗");
+    GRID.drawIt(this.traffic,"🚙");
   }
 
   Slide04(){

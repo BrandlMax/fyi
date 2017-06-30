@@ -34,7 +34,7 @@ class Style{
     this.colorArray = [
       "#1ED760",
       "#3FBFE9",
-      "#641ED8",
+      "#8028ff",
       "#B31D96",
       "#EB3A99",
       "#FED226"
