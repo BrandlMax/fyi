@@ -208,7 +208,7 @@ class Slides{
 
   Start00(){
     // Waiting for Connection
-    background(STYLE.colors.lila.full);
+    background(STYLE.colorArray[3]);
     fill(STYLE.colors.blue.full);
     // GRID.drawIt(100,"🎧");
     //text('Waiting / Code',50,50,100,100);
@@ -216,14 +216,14 @@ class Slides{
 
   Input00(){
     // Inputs
-    background(STYLE.colors.pink.full);
+    background(STYLE.colorArray[5]);
     fill(STYLE.colors.green.full);
     //text('Inputs',50,50,100,100);
   }
 
   Slide01(){
     // Music Amount
-    background(STYLE.colors.blue.full);
+    background(STYLE.colorArray[5]);
     fill(STYLE.colors.pink.full);
     //text('Music Amount',50,50,100,100);
     this.reCalc();
@@ -232,25 +232,25 @@ class Slides{
 
   Slide02(){
     // Music Duration
-    background(STYLE.colors.lila.full);
+    background(STYLE.colorArray[4]);
     fill(STYLE.colors.pink.full);
     //text('Music Duration',50,50,100,100);
     this.reCalc();
-    GRID.drawIt(this.showers,"🛀");
+    GRID.drawIt(this.showers,"🛁");
   }
 
   Slide03(){
     // Ads
-    background(STYLE.colors.green.full);
+    background(STYLE.colorArray[0]);
     fill(STYLE.colors.blue.full);
     //text('Ads',50,50,100,100);
     this.reCalc();
-    GRID.drawIt(this.traffic,"🚗");
+    GRID.drawIt(this.traffic,"🚙");
   }
 
   Slide04(){
     // Artist
-    background(STYLE.colors.pink.full);
+    background(STYLE.colorArray[3]);
     fill(STYLE.colors.blue.full);
     //text('Artist',50,50,100,100);
     this.reCalc();
@@ -259,7 +259,7 @@ class Slides{
 
   Slide05(){
     // Beer Tarif
-    background(STYLE.colors.pink.full);
+    background(STYLE.colorArray[1]);
     fill(STYLE.colors.blue.full);
     //text('Artist',50,50,100,100);
     this.reCalc();

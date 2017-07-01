@@ -25,12 +25,19 @@ class Style{
       }
     };
 
+    // 0 Green
+    // 1 Blue
+    // 2 DarkPurple
+    // 3 Purple
+    // 4 Pink
+    // 5 yellow
     this.colorArray = [
-      "#B12695",
-      "#E93F99",
-      "#F471A2",
-      "#B39BC9",
-      "#9EC1D2"
+      "#1ED760",
+      "#3FBFE9",
+      "#8028ff",
+      "#B31D96",
+      "#EB3A99",
+      "#FED226"
     ];
 
     this.center ={

@@ -8,7 +8,7 @@ body {
 
 #logo {
     position: fixed;
-    z-index: 9998;
+    z-index: 99999;
 }
 
 #logo img {
@@ -35,8 +35,13 @@ body {
     z-index: 9999;
 }
 
+
 .greenBG{
   background: #1ED760;
+}
+
+.blueBG{
+  background: #3FBFE9;
 }
 
 .lightBG{
@@ -47,12 +52,38 @@ body {
   background: #181818;
 }
 
-.lilaBG{
-  background: #651ed7;
+.darkpurpleBG{
+  background: #8028ff;
+}
+
+.purpleBG{
+  background: #B31D96;
 }
 
 .pinkBG{
-  background: #b21ed7;
+  background: #EB3A99;
+}
+
+.yellowBG{
+  background: #FED226;
+}
+
+.orangeBG{
+  background: #FB4C1D;
+}
+
+
+
+.black30{
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.black20{
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.black10{
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .slide{
