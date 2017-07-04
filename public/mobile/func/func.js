@@ -46,7 +46,7 @@ class Func{
         SCM.DATA.room = SCM.room;
         hideKeyboard();
         SLIDES.toSlide('Input00');
-      }
+      } 
     });
 
     // DONE BUTTON IOS FIX
