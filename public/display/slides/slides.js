@@ -48,7 +48,7 @@ class Slides{
 
   reCalc(){
     this.cd = floor(SCM.DATA.results.SongsPlayed/12); // 12 Songs per CD
-    this.showers = floor(SCM.DATA.results.TimeMusicPlayed/1000/60/10); // 10 mins per Shower
+    this.showers = floor(SCM.DATA.results.TimeMusicPlayed/1000/60/6); // 10 mins per Shower
     this.traffic = floor(SCM.DATA.results.TimeAdsPlayed/1000/60);
 
     // Fair Slide
