@@ -46,6 +46,8 @@ class Func{
         SCM.DATA.room = SCM.room;
         hideKeyboard();
         SLIDES.toSlide('Input00');
+      } else if( $(this).val() == "1337"){
+        $(this).val("😻");
       }
     });
 
