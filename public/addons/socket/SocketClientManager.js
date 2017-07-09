@@ -27,7 +27,8 @@ class SocketClientManager{
        SpotifyPlaylistData: null,
        currentStateMobile: 'Start00',
        currentStateDisplay: 'Start00',
-       results: null
+       results: null,
+       refresh: false
     };
   }
 

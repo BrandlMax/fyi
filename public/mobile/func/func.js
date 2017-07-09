@@ -46,7 +46,7 @@ class Func{
         SCM.DATA.room = SCM.room;
         hideKeyboard();
         SLIDES.toSlide('Input00');
-      } 
+      }
     });
 
     // DONE BUTTON IOS FIX
@@ -356,6 +356,16 @@ class Func{
   closeEdit(cur){
     SLIDES.toSlide('closeEdit');
     SLIDES.toSlide(this.lastCur);
+  }
+
+  refresh(){
+
+    SCM.DATA.refresh = true;
+    SCM.sendToServer();
+    SLIDES.toSlide('refresh');
+    console.log("Refresh");
+    location.reload();
+
   }
 
 }

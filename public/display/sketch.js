@@ -23,6 +23,9 @@ function setup() {
   // SOCKETS
   SCM.socket.on('Message', function(msg){
     console.log(msg);
+    if(msg == "alone"){
+      FUNC.refresh();
+    }
   });
 
   SCM.socket.on('Display', function(data){
