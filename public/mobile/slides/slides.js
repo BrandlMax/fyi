@@ -131,6 +131,10 @@ class Slides{
             this.edit.hide();
             break;
 
+        case 'refresh':
+            location.reload();
+            break;
+
         default:
             console.log('No Scene Found for ' + SCM.DATA.currentStateMobile + '!');
       }

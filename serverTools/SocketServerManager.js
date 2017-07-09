@@ -59,7 +59,8 @@ class SocketServerManager{
 
       this.RoomSettings.user = this.InsideRoom.length;
       // this.io.sockets.in(this.room).emit('RoomSettings', this.RoomSettings);
-
+      var msg = "alone";
+      this.io.sockets.emit('Message', msg);
       console.log("DISCONNECTED: " + this.socket.id + " in Room: " + this.room);
       console.log("NOW PEOPLE IN THE ROOM: " + this.RoomSettings.user);
   }

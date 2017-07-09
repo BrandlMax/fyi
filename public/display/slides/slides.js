@@ -196,6 +196,10 @@ class Slides{
             this.artist1.html(this.fair);
             break;
 
+        case 'refresh':
+            FUNC.refresh();
+            break;
+
         default:
             console.log('No Scene Found for ' + SCM.DATA.currentStateMobile + '!');
       }
